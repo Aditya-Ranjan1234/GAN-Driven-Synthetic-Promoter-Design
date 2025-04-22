@@ -57,13 +57,35 @@ If the extraction fails (which can happen if the HTML format is non-standard), t
 
 Navigate to the project directory and run the improved WGAN-GP using the provided scripts:
 
-### On Windows:
+### With CUDA (GPU) Support:
+
+#### On Windows:
+```bash
+cd DNA_GAN_Project
+run_with_cuda.bat
+```
+
+#### On Unix/MacOS:
+```bash
+cd DNA_GAN_Project
+chmod +x run_with_cuda.sh
+./run_with_cuda.sh
+```
+
+These scripts will:
+1. Check if CUDA is available on your system
+2. Install PyTorch with CUDA support if needed
+3. Run the model using GPU acceleration
+
+### Without CUDA (CPU only):
+
+#### On Windows:
 ```bash
 cd DNA_GAN_Project
 run_updated_gan.bat
 ```
 
-### On Unix/MacOS:
+#### On Unix/MacOS:
 ```bash
 cd DNA_GAN_Project
 chmod +x run_updated_gan.sh
@@ -135,13 +157,30 @@ head -n 10 data/improved_generated_sequences.fasta
 
 After generating sequences from both models, you can run a comprehensive evaluation to compare them with the original data:
 
-### On Windows:
+### With CUDA (GPU) Support:
+
+#### On Windows:
+```bash
+cd DNA_GAN_Project
+run_evaluation_with_cuda.bat
+```
+
+#### On Unix/MacOS:
+```bash
+cd DNA_GAN_Project
+chmod +x run_evaluation_with_cuda.sh
+./run_evaluation_with_cuda.sh
+```
+
+### Without CUDA (CPU only):
+
+#### On Windows:
 ```bash
 cd DNA_GAN_Project
 run_evaluation.bat
 ```
 
-### On Unix/MacOS:
+#### On Unix/MacOS:
 ```bash
 cd DNA_GAN_Project
 chmod +x run_evaluation.sh
@@ -188,6 +227,27 @@ The improved WGAN-GP offers several advantages over the previous Gumbel-Softmax 
 
 ## Troubleshooting
 
+### CUDA Not Available
+
+If CUDA is not available or not being used, you can:
+
+1. Check CUDA availability:
+   ```bash
+   python -m utils.check_cuda
+   ```
+
+2. Install PyTorch with CUDA support:
+   ```bash
+   pip uninstall torch
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+   ```
+
+3. Use the CUDA-specific scripts:
+   ```bash
+   run_with_cuda.bat  # On Windows
+   ./run_with_cuda.sh  # On Unix/MacOS
+   ```
+
 ### CUDA Out of Memory
 
 If you encounter CUDA out of memory errors, try reducing the batch size:
@@ -211,3 +271,13 @@ If training is too slow, you can try:
 - Reducing the hidden dimension: `--hidden_dim 256`
 - Reducing the number of LSTM layers: `--num_layers 1`
 - Increasing the batch size (if memory allows): `--batch_size 128`
+
+### Gradient Penalty Error
+
+If you encounter an error related to gradient penalty calculation:
+
+```
+RuntimeError: view size is not compatible with input tensor's size and stride
+```
+
+This has been fixed in the latest version by using `reshape()` instead of `view()`. Make sure you're using the latest version of the code.
