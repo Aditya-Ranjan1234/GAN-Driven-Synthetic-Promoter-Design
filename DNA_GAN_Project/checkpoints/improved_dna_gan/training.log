@@ -1,0 +1,524 @@
+2025-04-23 00:48:41,108 - INFO - Arguments: Namespace(fasta_file='data/seq_download.pl.fasta', seq_len=150, noise_dim=100, hidden_dim=512, num_layers=2, num_epochs=500, batch_size=64, lr_g=0.0001, lr_d=0.0001, temperature=1.0, n_critic=5, lambda_gp=10.0, checkpoint_dir='checkpoints/improved_dna_gan', log_interval=1, save_interval=10, resume=None, seed=42, no_cuda=False, num_workers=4)
+2025-04-23 00:59:17,832 - INFO - Arguments: Namespace(fasta_file='data/clean_seq_download.fasta', seq_len=150, noise_dim=100, hidden_dim=512, num_layers=2, num_epochs=500, batch_size=64, lr_g=0.0001, lr_d=0.0001, temperature=1.0, n_critic=5, lambda_gp=10.0, checkpoint_dir='checkpoints/improved_dna_gan', log_interval=1, save_interval=10, resume=None, seed=42, no_cuda=False, num_workers=4)
+2025-04-23 01:05:04,534 - INFO - Arguments: Namespace(fasta_file='data/clean_seq_download.fasta', seq_len=150, noise_dim=100, hidden_dim=512, num_layers=2, num_epochs=500, batch_size=64, lr_g=0.0001, lr_d=0.0001, temperature=1.0, n_critic=5, lambda_gp=10.0, checkpoint_dir='checkpoints/improved_dna_gan', log_interval=1, save_interval=10, resume=None, seed=42, no_cuda=False, num_workers=4)
+2025-04-23 01:05:10,677 - INFO - Generator architecture:
+ImprovedGenerator(
+  (fc_hidden): Linear(in_features=100, out_features=1024, bias=True)
+  (fc_cell): Linear(in_features=100, out_features=1024, bias=True)
+  (lstm): LSTM(512, 512, num_layers=2, batch_first=True, dropout=0.2)
+  (attention): SelfAttention(
+    (query): Linear(in_features=512, out_features=512, bias=True)
+    (key): Linear(in_features=512, out_features=512, bias=True)
+    (value): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  (fc): Linear(in_features=512, out_features=4, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 01:05:10,678 - INFO - Discriminator architecture:
+ImprovedDiscriminator(
+  (conv1): Conv1d(4, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv2): Conv1d(64, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv3): Conv1d(128, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+  (pool): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (fc1): Linear(in_features=4608, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=1, bias=True)
+  (layer_norm1): LayerNorm((64, 150), eps=1e-05, elementwise_affine=True)
+  (layer_norm2): LayerNorm((128, 75), eps=1e-05, elementwise_affine=True)
+  (layer_norm3): LayerNorm((256, 37), eps=1e-05, elementwise_affine=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 01:11:24,481 - INFO - Arguments: Namespace(fasta_file='data/preprocessed_dna_sequences.fasta', seq_len=150, noise_dim=100, hidden_dim=512, num_layers=2, num_epochs=500, batch_size=64, lr_g=0.0001, lr_d=0.0001, temperature=1.0, n_critic=5, lambda_gp=10.0, checkpoint_dir='checkpoints/improved_dna_gan', log_interval=1, save_interval=10, resume=None, seed=42, no_cuda=False, num_workers=4)
+2025-04-23 01:11:30,905 - INFO - Generator architecture:
+ImprovedGenerator(
+  (fc_hidden): Linear(in_features=100, out_features=1024, bias=True)
+  (fc_cell): Linear(in_features=100, out_features=1024, bias=True)
+  (lstm): LSTM(512, 512, num_layers=2, batch_first=True, dropout=0.2)
+  (attention): SelfAttention(
+    (query): Linear(in_features=512, out_features=512, bias=True)
+    (key): Linear(in_features=512, out_features=512, bias=True)
+    (value): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  (fc): Linear(in_features=512, out_features=4, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 01:11:30,905 - INFO - Discriminator architecture:
+ImprovedDiscriminator(
+  (conv1): Conv1d(4, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv2): Conv1d(64, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv3): Conv1d(128, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+  (pool): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (fc1): Linear(in_features=4608, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=1, bias=True)
+  (layer_norm1): LayerNorm((64, 150), eps=1e-05, elementwise_affine=True)
+  (layer_norm2): LayerNorm((128, 75), eps=1e-05, elementwise_affine=True)
+  (layer_norm3): LayerNorm((256, 37), eps=1e-05, elementwise_affine=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 01:28:18,994 - INFO - Arguments: Namespace(fasta_file='data/preprocessed_dna_sequences.fasta', seq_len=150, noise_dim=100, hidden_dim=512, num_layers=2, num_epochs=500, batch_size=64, lr_g=0.0001, lr_d=0.0001, temperature=1.0, n_critic=5, lambda_gp=10.0, checkpoint_dir='checkpoints/improved_dna_gan', log_interval=1, save_interval=10, resume=None, seed=42, no_cuda=False, num_workers=4)
+2025-04-23 01:28:24,540 - INFO - Generator architecture:
+ImprovedGenerator(
+  (fc_hidden): Linear(in_features=100, out_features=1024, bias=True)
+  (fc_cell): Linear(in_features=100, out_features=1024, bias=True)
+  (lstm): LSTM(512, 512, num_layers=2, batch_first=True, dropout=0.2)
+  (attention): SelfAttention(
+    (query): Linear(in_features=512, out_features=512, bias=True)
+    (key): Linear(in_features=512, out_features=512, bias=True)
+    (value): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  (fc): Linear(in_features=512, out_features=4, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 01:28:24,541 - INFO - Discriminator architecture:
+ImprovedDiscriminator(
+  (conv1): Conv1d(4, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv2): Conv1d(64, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv3): Conv1d(128, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+  (pool): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (fc1): Linear(in_features=4608, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=1, bias=True)
+  (layer_norm1): LayerNorm((64, 150), eps=1e-05, elementwise_affine=True)
+  (layer_norm2): LayerNorm((128, 75), eps=1e-05, elementwise_affine=True)
+  (layer_norm3): LayerNorm((256, 37), eps=1e-05, elementwise_affine=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 01:30:22,046 - INFO - Epoch 1/500 | Time: 116.07s | G Loss: 9.1162 | D Loss: -4.4147 | W Dist: 5.2501 | GP: 0.0835 | GC: 0.5125 | Moran's I: 0.0060 | Diversity: 0.7443
+2025-04-23 01:31:32,544 - INFO - Epoch 2/500 | Time: 70.50s | G Loss: 8.3689 | D Loss: -4.9781 | W Dist: 5.8086 | GP: 0.0831 | GC: 0.3590 | Moran's I: 0.2965 | Diversity: 0.7226
+2025-04-23 01:32:41,059 - INFO - Epoch 3/500 | Time: 68.52s | G Loss: 7.8246 | D Loss: -3.5657 | W Dist: 4.1496 | GP: 0.0584 | GC: 0.4289 | Moran's I: -0.0234 | Diversity: 0.7389
+2025-04-23 01:33:49,206 - INFO - Epoch 4/500 | Time: 68.15s | G Loss: 11.0717 | D Loss: -1.9120 | W Dist: 2.2554 | GP: 0.0343 | GC: 0.4613 | Moran's I: -0.0121 | Diversity: 0.7189
+2025-04-23 01:35:37,025 - INFO - Epoch 5/500 | Time: 107.82s | G Loss: 14.3384 | D Loss: -1.4698 | W Dist: 1.7661 | GP: 0.0296 | GC: 0.4569 | Moran's I: -0.0192 | Diversity: 0.7343
+2025-04-23 01:37:11,587 - INFO - Epoch 6/500 | Time: 94.56s | G Loss: 14.1264 | D Loss: -1.3492 | W Dist: 1.6257 | GP: 0.0276 | GC: 0.4575 | Moran's I: -0.0166 | Diversity: 0.7424
+2025-04-23 01:38:19,824 - INFO - Epoch 7/500 | Time: 68.24s | G Loss: 11.9894 | D Loss: -1.2511 | W Dist: 1.5162 | GP: 0.0265 | GC: 0.4515 | Moran's I: -0.0060 | Diversity: 0.7457
+2025-04-23 01:39:31,645 - INFO - Epoch 8/500 | Time: 71.82s | G Loss: 11.3217 | D Loss: -1.2028 | W Dist: 1.4808 | GP: 0.0278 | GC: 0.4365 | Moran's I: 0.0063 | Diversity: 0.7440
+2025-04-23 01:40:42,087 - INFO - Epoch 9/500 | Time: 70.44s | G Loss: 11.5028 | D Loss: -1.2770 | W Dist: 1.5529 | GP: 0.0276 | GC: 0.4352 | Moran's I: 0.0081 | Diversity: 0.7444
+2025-04-23 01:42:30,109 - INFO - Epoch 10/500 | Time: 108.02s | G Loss: 11.1524 | D Loss: -1.1024 | W Dist: 1.3477 | GP: 0.0245 | GC: 0.4855 | Moran's I: 0.0241 | Diversity: 0.7495
+2025-04-23 01:42:30,229 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_10.pt
+2025-04-23 01:43:42,053 - INFO - Epoch 11/500 | Time: 71.82s | G Loss: 8.6019 | D Loss: -0.8703 | W Dist: 1.0620 | GP: 0.0192 | GC: 0.4695 | Moran's I: 0.0224 | Diversity: 0.7485
+2025-04-23 01:46:36,669 - INFO - Epoch 12/500 | Time: 174.61s | G Loss: 10.6747 | D Loss: -0.8103 | W Dist: 0.9786 | GP: 0.0168 | GC: 0.5161 | Moran's I: 0.0613 | Diversity: 0.7466
+2025-04-23 01:48:55,781 - INFO - Epoch 13/500 | Time: 139.11s | G Loss: 10.8232 | D Loss: -0.7540 | W Dist: 0.9040 | GP: 0.0150 | GC: 0.4959 | Moran's I: 0.0345 | Diversity: 0.7481
+2025-04-23 01:50:03,309 - INFO - Epoch 14/500 | Time: 67.53s | G Loss: 13.4610 | D Loss: -0.7513 | W Dist: 0.8975 | GP: 0.0146 | GC: 0.5071 | Moran's I: 0.0419 | Diversity: 0.7474
+2025-04-23 01:51:11,886 - INFO - Epoch 15/500 | Time: 68.58s | G Loss: 13.1065 | D Loss: -0.7380 | W Dist: 0.8797 | GP: 0.0142 | GC: 0.4969 | Moran's I: 0.0711 | Diversity: 0.7487
+2025-04-23 01:52:19,777 - INFO - Epoch 16/500 | Time: 67.89s | G Loss: 13.6827 | D Loss: -0.7865 | W Dist: 0.9320 | GP: 0.0145 | GC: 0.4967 | Moran's I: 0.0615 | Diversity: 0.7503
+2025-04-23 01:53:26,115 - INFO - Epoch 17/500 | Time: 66.34s | G Loss: 14.0796 | D Loss: -0.7549 | W Dist: 0.8995 | GP: 0.0145 | GC: 0.5256 | Moran's I: 0.0378 | Diversity: 0.7491
+2025-04-23 01:54:33,832 - INFO - Epoch 18/500 | Time: 67.72s | G Loss: 14.0381 | D Loss: -0.8270 | W Dist: 0.9729 | GP: 0.0146 | GC: 0.5333 | Moran's I: 0.0538 | Diversity: 0.7478
+2025-04-23 01:55:42,917 - INFO - Epoch 19/500 | Time: 69.08s | G Loss: 15.6816 | D Loss: -0.8533 | W Dist: 0.9972 | GP: 0.0144 | GC: 0.5177 | Moran's I: 0.0613 | Diversity: 0.7478
+2025-04-23 01:56:49,617 - INFO - Epoch 20/500 | Time: 66.70s | G Loss: 18.3755 | D Loss: -0.8674 | W Dist: 1.0147 | GP: 0.0147 | GC: 0.5507 | Moran's I: 0.0535 | Diversity: 0.7423
+2025-04-23 01:56:49,699 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_20.pt
+2025-04-23 01:57:56,766 - INFO - Epoch 21/500 | Time: 67.07s | G Loss: 17.5808 | D Loss: -0.8504 | W Dist: 0.9969 | GP: 0.0147 | GC: 0.5449 | Moran's I: 0.0497 | Diversity: 0.7457
+2025-04-23 01:59:05,455 - INFO - Epoch 22/500 | Time: 68.69s | G Loss: 16.5373 | D Loss: -0.8459 | W Dist: 0.9944 | GP: 0.0149 | GC: 0.5238 | Moran's I: 0.0320 | Diversity: 0.7475
+2025-04-23 02:00:13,019 - INFO - Epoch 23/500 | Time: 67.56s | G Loss: 15.4931 | D Loss: -0.8992 | W Dist: 1.0482 | GP: 0.0149 | GC: 0.5263 | Moran's I: 0.0117 | Diversity: 0.7449
+2025-04-23 02:01:19,392 - INFO - Epoch 24/500 | Time: 66.37s | G Loss: 15.1130 | D Loss: -0.9303 | W Dist: 1.0843 | GP: 0.0154 | GC: 0.5120 | Moran's I: 0.0146 | Diversity: 0.7471
+2025-04-23 02:02:26,572 - INFO - Epoch 25/500 | Time: 67.18s | G Loss: 15.5519 | D Loss: -0.9183 | W Dist: 1.0641 | GP: 0.0146 | GC: 0.5277 | Moran's I: 0.0558 | Diversity: 0.7462
+2025-04-23 02:03:35,501 - INFO - Epoch 26/500 | Time: 68.93s | G Loss: 16.3447 | D Loss: -0.8956 | W Dist: 1.0421 | GP: 0.0147 | GC: 0.5476 | Moran's I: 0.0103 | Diversity: 0.7389
+2025-04-23 02:04:42,335 - INFO - Epoch 27/500 | Time: 66.83s | G Loss: 16.1728 | D Loss: -0.9167 | W Dist: 1.0628 | GP: 0.0146 | GC: 0.4985 | Moran's I: 0.0291 | Diversity: 0.7456
+2025-04-23 02:05:48,851 - INFO - Epoch 28/500 | Time: 66.52s | G Loss: 17.1605 | D Loss: -0.9153 | W Dist: 1.0543 | GP: 0.0139 | GC: 0.5277 | Moran's I: 0.0493 | Diversity: 0.7391
+2025-04-23 02:06:56,959 - INFO - Epoch 29/500 | Time: 68.11s | G Loss: 17.3128 | D Loss: -0.8991 | W Dist: 1.0413 | GP: 0.0142 | GC: 0.5043 | Moran's I: 0.0597 | Diversity: 0.7445
+2025-04-23 02:08:05,488 - INFO - Epoch 30/500 | Time: 68.53s | G Loss: 17.8818 | D Loss: -0.9820 | W Dist: 1.1275 | GP: 0.0146 | GC: 0.5427 | Moran's I: 0.0225 | Diversity: 0.7399
+2025-04-23 02:08:05,578 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_30.pt
+2025-04-23 02:09:12,534 - INFO - Epoch 31/500 | Time: 66.96s | G Loss: 16.5882 | D Loss: -0.9541 | W Dist: 1.1001 | GP: 0.0146 | GC: 0.5178 | Moran's I: 0.0115 | Diversity: 0.7405
+2025-04-23 02:10:19,832 - INFO - Epoch 32/500 | Time: 67.30s | G Loss: 15.8336 | D Loss: -0.9124 | W Dist: 1.0548 | GP: 0.0142 | GC: 0.5269 | Moran's I: 0.0301 | Diversity: 0.7386
+2025-04-23 02:11:28,727 - INFO - Epoch 33/500 | Time: 68.89s | G Loss: 15.5077 | D Loss: -0.9173 | W Dist: 1.0590 | GP: 0.0142 | GC: 0.5139 | Moran's I: 0.0098 | Diversity: 0.7435
+2025-04-23 02:12:36,257 - INFO - Epoch 34/500 | Time: 67.53s | G Loss: 15.6189 | D Loss: -0.9926 | W Dist: 1.1350 | GP: 0.0142 | GC: 0.4893 | Moran's I: -0.0099 | Diversity: 0.7411
+2025-04-23 02:13:42,597 - INFO - Epoch 35/500 | Time: 66.34s | G Loss: 16.7827 | D Loss: -1.0424 | W Dist: 1.1965 | GP: 0.0154 | GC: 0.5591 | Moran's I: 0.0050 | Diversity: 0.7315
+2025-04-23 02:14:50,145 - INFO - Epoch 36/500 | Time: 67.55s | G Loss: 15.9030 | D Loss: -0.9887 | W Dist: 1.1379 | GP: 0.0149 | GC: 0.5451 | Moran's I: 0.0168 | Diversity: 0.7339
+2025-04-23 02:15:58,543 - INFO - Epoch 37/500 | Time: 68.40s | G Loss: 16.1689 | D Loss: -1.0166 | W Dist: 1.1646 | GP: 0.0148 | GC: 0.5214 | Moran's I: 0.0041 | Diversity: 0.7416
+2025-04-23 02:17:04,880 - INFO - Epoch 38/500 | Time: 66.34s | G Loss: 16.2581 | D Loss: -0.9918 | W Dist: 1.1389 | GP: 0.0147 | GC: 0.5507 | Moran's I: -0.0203 | Diversity: 0.7300
+2025-04-23 02:18:11,792 - INFO - Epoch 39/500 | Time: 66.91s | G Loss: 15.8811 | D Loss: -1.0473 | W Dist: 1.1953 | GP: 0.0148 | GC: 0.5550 | Moran's I: 0.0251 | Diversity: 0.7372
+2025-04-23 02:19:20,191 - INFO - Epoch 40/500 | Time: 68.40s | G Loss: 15.6769 | D Loss: -1.0481 | W Dist: 1.1964 | GP: 0.0148 | GC: 0.5479 | Moran's I: -0.0071 | Diversity: 0.7302
+2025-04-23 02:19:20,320 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_40.pt
+2025-04-23 02:20:27,501 - INFO - Epoch 41/500 | Time: 67.18s | G Loss: 16.6906 | D Loss: -1.0245 | W Dist: 1.1754 | GP: 0.0151 | GC: 0.5312 | Moran's I: 0.0275 | Diversity: 0.7375
+2025-04-23 02:21:34,156 - INFO - Epoch 42/500 | Time: 66.65s | G Loss: 16.0028 | D Loss: -1.0439 | W Dist: 1.1990 | GP: 0.0155 | GC: 0.5477 | Moran's I: 0.0139 | Diversity: 0.7389
+2025-04-23 02:22:41,678 - INFO - Epoch 43/500 | Time: 67.52s | G Loss: 14.7519 | D Loss: -1.0456 | W Dist: 1.2010 | GP: 0.0155 | GC: 0.5467 | Moran's I: 0.0177 | Diversity: 0.7377
+2025-04-23 02:23:50,284 - INFO - Epoch 44/500 | Time: 68.61s | G Loss: 14.1124 | D Loss: -1.0884 | W Dist: 1.2462 | GP: 0.0158 | GC: 0.5085 | Moran's I: 0.0169 | Diversity: 0.7414
+2025-04-23 02:24:56,956 - INFO - Epoch 45/500 | Time: 66.67s | G Loss: 14.1166 | D Loss: -1.0671 | W Dist: 1.2216 | GP: 0.0154 | GC: 0.5264 | Moran's I: 0.0015 | Diversity: 0.7420
+2025-04-23 02:26:03,970 - INFO - Epoch 46/500 | Time: 67.01s | G Loss: 14.0079 | D Loss: -1.0847 | W Dist: 1.2440 | GP: 0.0159 | GC: 0.5319 | Moran's I: 0.0254 | Diversity: 0.7444
+2025-04-23 02:27:12,425 - INFO - Epoch 47/500 | Time: 68.45s | G Loss: 14.5030 | D Loss: -1.1136 | W Dist: 1.2733 | GP: 0.0160 | GC: 0.5681 | Moran's I: 0.0091 | Diversity: 0.7304
+2025-04-23 02:28:19,607 - INFO - Epoch 48/500 | Time: 67.18s | G Loss: 14.6249 | D Loss: -1.1050 | W Dist: 1.2673 | GP: 0.0162 | GC: 0.5475 | Moran's I: 0.0136 | Diversity: 0.7376
+2025-04-23 02:29:25,979 - INFO - Epoch 49/500 | Time: 66.37s | G Loss: 15.2426 | D Loss: -1.0946 | W Dist: 1.2503 | GP: 0.0156 | GC: 0.5111 | Moran's I: 0.0390 | Diversity: 0.7424
+2025-04-23 02:30:33,213 - INFO - Epoch 50/500 | Time: 67.23s | G Loss: 14.1344 | D Loss: -1.0981 | W Dist: 1.2612 | GP: 0.0163 | GC: 0.5437 | Moran's I: 0.0007 | Diversity: 0.7335
+2025-04-23 02:30:33,341 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_50.pt
+2025-04-23 02:31:41,873 - INFO - Epoch 51/500 | Time: 68.53s | G Loss: 14.3312 | D Loss: -1.1322 | W Dist: 1.2986 | GP: 0.0166 | GC: 0.5321 | Moran's I: 0.0315 | Diversity: 0.7383
+2025-04-23 02:32:48,692 - INFO - Epoch 52/500 | Time: 66.82s | G Loss: 14.4872 | D Loss: -1.1762 | W Dist: 1.3412 | GP: 0.0165 | GC: 0.5545 | Moran's I: -0.0104 | Diversity: 0.7343
+2025-04-23 02:33:55,984 - INFO - Epoch 53/500 | Time: 67.29s | G Loss: 14.7620 | D Loss: -1.1630 | W Dist: 1.3296 | GP: 0.0167 | GC: 0.5295 | Moran's I: 0.0019 | Diversity: 0.7392
+2025-04-23 02:35:03,726 - INFO - Epoch 54/500 | Time: 67.74s | G Loss: 15.2716 | D Loss: -1.1638 | W Dist: 1.3347 | GP: 0.0171 | GC: 0.5145 | Moran's I: -0.0014 | Diversity: 0.7443
+2025-04-23 02:36:11,283 - INFO - Epoch 55/500 | Time: 67.56s | G Loss: 15.7675 | D Loss: -1.1431 | W Dist: 1.3044 | GP: 0.0161 | GC: 0.4960 | Moran's I: 0.0197 | Diversity: 0.7425
+2025-04-23 02:37:17,000 - INFO - Epoch 56/500 | Time: 65.72s | G Loss: 16.3235 | D Loss: -1.2093 | W Dist: 1.3785 | GP: 0.0169 | GC: 0.5419 | Moran's I: 0.0210 | Diversity: 0.7404
+2025-04-23 02:38:23,858 - INFO - Epoch 57/500 | Time: 66.86s | G Loss: 15.5175 | D Loss: -1.2467 | W Dist: 1.4253 | GP: 0.0179 | GC: 0.5279 | Moran's I: 0.0025 | Diversity: 0.7377
+2025-04-23 02:39:32,187 - INFO - Epoch 58/500 | Time: 68.33s | G Loss: 14.7287 | D Loss: -1.2282 | W Dist: 1.4113 | GP: 0.0183 | GC: 0.5321 | Moran's I: 0.0218 | Diversity: 0.7384
+2025-04-23 02:40:38,750 - INFO - Epoch 59/500 | Time: 66.56s | G Loss: 15.1590 | D Loss: -1.2041 | W Dist: 1.3752 | GP: 0.0171 | GC: 0.5125 | Moran's I: 0.0204 | Diversity: 0.7410
+2025-04-23 02:41:45,173 - INFO - Epoch 60/500 | Time: 66.42s | G Loss: 14.6234 | D Loss: -1.2632 | W Dist: 1.4422 | GP: 0.0179 | GC: 0.5117 | Moran's I: -0.0014 | Diversity: 0.7399
+2025-04-23 02:41:45,267 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_60.pt
+2025-04-23 02:42:53,576 - INFO - Epoch 61/500 | Time: 68.31s | G Loss: 14.6509 | D Loss: -1.1905 | W Dist: 1.3647 | GP: 0.0174 | GC: 0.4681 | Moran's I: 0.0245 | Diversity: 0.7433
+2025-04-23 02:44:01,866 - INFO - Epoch 62/500 | Time: 68.29s | G Loss: 15.0312 | D Loss: -1.2301 | W Dist: 1.4044 | GP: 0.0174 | GC: 0.5257 | Moran's I: -0.0027 | Diversity: 0.7439
+2025-04-23 02:45:08,366 - INFO - Epoch 63/500 | Time: 66.50s | G Loss: 15.5657 | D Loss: -1.2439 | W Dist: 1.4207 | GP: 0.0177 | GC: 0.5312 | Moran's I: -0.0014 | Diversity: 0.7364
+2025-04-23 02:46:15,815 - INFO - Epoch 64/500 | Time: 67.45s | G Loss: 14.7084 | D Loss: -1.2364 | W Dist: 1.4160 | GP: 0.0180 | GC: 0.5370 | Moran's I: -0.0016 | Diversity: 0.7343
+2025-04-23 02:47:25,050 - INFO - Epoch 65/500 | Time: 69.23s | G Loss: 13.8655 | D Loss: -1.2231 | W Dist: 1.4072 | GP: 0.0184 | GC: 0.5054 | Moran's I: 0.0051 | Diversity: 0.7450
+2025-04-23 02:48:33,006 - INFO - Epoch 66/500 | Time: 67.96s | G Loss: 14.3772 | D Loss: -1.2706 | W Dist: 1.4528 | GP: 0.0182 | GC: 0.5471 | Moran's I: -0.0029 | Diversity: 0.7389
+2025-04-23 02:49:40,291 - INFO - Epoch 67/500 | Time: 67.28s | G Loss: 14.6863 | D Loss: -1.2448 | W Dist: 1.4252 | GP: 0.0180 | GC: 0.5243 | Moran's I: -0.0022 | Diversity: 0.7443
+2025-04-23 02:50:48,529 - INFO - Epoch 68/500 | Time: 68.24s | G Loss: 14.3190 | D Loss: -1.2909 | W Dist: 1.4740 | GP: 0.0183 | GC: 0.5129 | Moran's I: -0.0118 | Diversity: 0.7389
+2025-04-23 02:51:57,511 - INFO - Epoch 69/500 | Time: 68.98s | G Loss: 13.8527 | D Loss: -1.2794 | W Dist: 1.4642 | GP: 0.0185 | GC: 0.5175 | Moran's I: 0.0092 | Diversity: 0.7406
+2025-04-23 02:53:03,971 - INFO - Epoch 70/500 | Time: 66.46s | G Loss: 13.8563 | D Loss: -1.2895 | W Dist: 1.4760 | GP: 0.0187 | GC: 0.5098 | Moran's I: 0.0161 | Diversity: 0.7418
+2025-04-23 02:53:04,099 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_70.pt
+2025-04-23 02:54:11,598 - INFO - Epoch 71/500 | Time: 67.50s | G Loss: 13.9838 | D Loss: -1.3060 | W Dist: 1.4956 | GP: 0.0190 | GC: 0.5142 | Moran's I: -0.0056 | Diversity: 0.7414
+2025-04-23 02:55:20,839 - INFO - Epoch 72/500 | Time: 69.24s | G Loss: 14.3725 | D Loss: -1.3092 | W Dist: 1.4940 | GP: 0.0185 | GC: 0.5303 | Moran's I: 0.0052 | Diversity: 0.7396
+2025-04-23 02:56:28,313 - INFO - Epoch 73/500 | Time: 67.47s | G Loss: 13.6272 | D Loss: -1.2940 | W Dist: 1.4855 | GP: 0.0191 | GC: 0.5152 | Moran's I: -0.0142 | Diversity: 0.7438
+2025-04-23 02:57:34,567 - INFO - Epoch 74/500 | Time: 66.25s | G Loss: 13.4097 | D Loss: -1.3304 | W Dist: 1.5261 | GP: 0.0196 | GC: 0.5165 | Moran's I: -0.0116 | Diversity: 0.7365
+2025-04-23 02:58:42,383 - INFO - Epoch 75/500 | Time: 67.82s | G Loss: 13.6475 | D Loss: -1.3137 | W Dist: 1.5091 | GP: 0.0195 | GC: 0.5064 | Moran's I: -0.0169 | Diversity: 0.7369
+2025-04-23 02:59:50,506 - INFO - Epoch 76/500 | Time: 68.12s | G Loss: 13.5582 | D Loss: -1.3477 | W Dist: 1.5466 | GP: 0.0199 | GC: 0.4821 | Moran's I: -0.0005 | Diversity: 0.7429
+2025-04-23 03:00:57,074 - INFO - Epoch 77/500 | Time: 66.57s | G Loss: 13.3421 | D Loss: -1.3466 | W Dist: 1.5434 | GP: 0.0197 | GC: 0.5056 | Moran's I: -0.0425 | Diversity: 0.7413
+2025-04-23 03:02:04,372 - INFO - Epoch 78/500 | Time: 67.30s | G Loss: 12.5853 | D Loss: -1.3311 | W Dist: 1.5340 | GP: 0.0203 | GC: 0.5241 | Moran's I: -0.0231 | Diversity: 0.7391
+2025-04-23 03:03:13,174 - INFO - Epoch 79/500 | Time: 68.80s | G Loss: 12.4485 | D Loss: -1.3688 | W Dist: 1.5721 | GP: 0.0203 | GC: 0.4853 | Moran's I: -0.0051 | Diversity: 0.7395
+2025-04-23 03:04:20,500 - INFO - Epoch 80/500 | Time: 67.33s | G Loss: 12.4775 | D Loss: -1.3819 | W Dist: 1.5856 | GP: 0.0204 | GC: 0.4625 | Moran's I: -0.0234 | Diversity: 0.7407
+2025-04-23 03:04:20,621 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_80.pt
+2025-04-23 03:05:26,625 - INFO - Epoch 81/500 | Time: 66.00s | G Loss: 13.0813 | D Loss: -1.3792 | W Dist: 1.5809 | GP: 0.0202 | GC: 0.4945 | Moran's I: -0.0009 | Diversity: 0.7413
+2025-04-23 03:06:34,604 - INFO - Epoch 82/500 | Time: 67.98s | G Loss: 13.4155 | D Loss: -1.3887 | W Dist: 1.5926 | GP: 0.0204 | GC: 0.4763 | Moran's I: 0.0073 | Diversity: 0.7446
+2025-04-23 03:07:43,144 - INFO - Epoch 83/500 | Time: 68.54s | G Loss: 13.5399 | D Loss: -1.3810 | W Dist: 1.5805 | GP: 0.0200 | GC: 0.4797 | Moran's I: 0.0004 | Diversity: 0.7387
+2025-04-23 03:08:49,916 - INFO - Epoch 84/500 | Time: 66.77s | G Loss: 12.7802 | D Loss: -1.3694 | W Dist: 1.5787 | GP: 0.0209 | GC: 0.5086 | Moran's I: -0.0035 | Diversity: 0.7368
+2025-04-23 03:09:56,887 - INFO - Epoch 85/500 | Time: 66.97s | G Loss: 12.1442 | D Loss: -1.4618 | W Dist: 1.6801 | GP: 0.0218 | GC: 0.4889 | Moran's I: 0.0030 | Diversity: 0.7396
+2025-04-23 03:11:06,038 - INFO - Epoch 86/500 | Time: 69.15s | G Loss: 12.1411 | D Loss: -1.4662 | W Dist: 1.6830 | GP: 0.0217 | GC: 0.4521 | Moran's I: -0.0122 | Diversity: 0.7380
+2025-04-23 03:12:14,163 - INFO - Epoch 87/500 | Time: 68.12s | G Loss: 11.9447 | D Loss: -1.4535 | W Dist: 1.6796 | GP: 0.0226 | GC: 0.4714 | Moran's I: 0.0016 | Diversity: 0.7412
+2025-04-23 03:13:20,285 - INFO - Epoch 88/500 | Time: 66.12s | G Loss: 11.9001 | D Loss: -1.4448 | W Dist: 1.6571 | GP: 0.0212 | GC: 0.4860 | Moran's I: -0.0156 | Diversity: 0.7380
+2025-04-23 03:14:27,764 - INFO - Epoch 89/500 | Time: 67.48s | G Loss: 11.9204 | D Loss: -1.4425 | W Dist: 1.6627 | GP: 0.0220 | GC: 0.4987 | Moran's I: -0.0179 | Diversity: 0.7350
+2025-04-23 03:15:36,599 - INFO - Epoch 90/500 | Time: 68.83s | G Loss: 12.1134 | D Loss: -1.4633 | W Dist: 1.6775 | GP: 0.0214 | GC: 0.4759 | Moran's I: 0.0056 | Diversity: 0.7404
+2025-04-23 03:15:36,737 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_90.pt
+2025-04-23 03:16:51,090 - INFO - Epoch 91/500 | Time: 74.35s | G Loss: 12.1109 | D Loss: -1.4451 | W Dist: 1.6645 | GP: 0.0219 | GC: 0.4848 | Moran's I: 0.0114 | Diversity: 0.7350
+2025-04-23 03:17:57,861 - INFO - Epoch 92/500 | Time: 66.77s | G Loss: 12.3917 | D Loss: -1.4639 | W Dist: 1.6864 | GP: 0.0223 | GC: 0.4773 | Moran's I: 0.0110 | Diversity: 0.7465
+2025-04-23 03:19:06,295 - INFO - Epoch 93/500 | Time: 68.43s | G Loss: 12.1088 | D Loss: -1.4413 | W Dist: 1.6660 | GP: 0.0225 | GC: 0.4752 | Moran's I: 0.0156 | Diversity: 0.7415
+2025-04-23 03:20:14,202 - INFO - Epoch 94/500 | Time: 67.91s | G Loss: 11.5257 | D Loss: -1.4853 | W Dist: 1.7134 | GP: 0.0228 | GC: 0.4501 | Moran's I: 0.0252 | Diversity: 0.7405
+2025-04-23 03:21:20,346 - INFO - Epoch 95/500 | Time: 66.14s | G Loss: 11.7348 | D Loss: -1.4754 | W Dist: 1.6992 | GP: 0.0224 | GC: 0.4273 | Moran's I: 0.0198 | Diversity: 0.7388
+2025-04-23 03:22:27,984 - INFO - Epoch 96/500 | Time: 67.64s | G Loss: 11.4711 | D Loss: -1.4578 | W Dist: 1.6883 | GP: 0.0230 | GC: 0.4612 | Moran's I: 0.0002 | Diversity: 0.7421
+2025-04-23 03:23:36,249 - INFO - Epoch 97/500 | Time: 68.26s | G Loss: 11.4137 | D Loss: -1.4670 | W Dist: 1.6883 | GP: 0.0221 | GC: 0.4586 | Moran's I: 0.0249 | Diversity: 0.7423
+2025-04-23 03:24:43,639 - INFO - Epoch 98/500 | Time: 67.39s | G Loss: 10.8356 | D Loss: -1.5050 | W Dist: 1.7450 | GP: 0.0240 | GC: 0.4351 | Moran's I: 0.0152 | Diversity: 0.7415
+2025-04-23 03:25:50,852 - INFO - Epoch 99/500 | Time: 67.21s | G Loss: 10.6472 | D Loss: -1.4915 | W Dist: 1.7274 | GP: 0.0236 | GC: 0.4488 | Moran's I: 0.0513 | Diversity: 0.7434
+2025-04-23 03:26:58,646 - INFO - Epoch 100/500 | Time: 67.79s | G Loss: 11.8340 | D Loss: -1.5554 | W Dist: 1.7913 | GP: 0.0236 | GC: 0.5276 | Moran's I: -0.0162 | Diversity: 0.7364
+2025-04-23 03:26:58,753 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_100.pt
+2025-04-23 03:28:07,205 - INFO - Epoch 101/500 | Time: 68.45s | G Loss: 11.9798 | D Loss: -1.5162 | W Dist: 1.7461 | GP: 0.0230 | GC: 0.5073 | Moran's I: -0.0088 | Diversity: 0.7354
+2025-04-23 03:29:13,878 - INFO - Epoch 102/500 | Time: 66.67s | G Loss: 11.6636 | D Loss: -1.5111 | W Dist: 1.7488 | GP: 0.0238 | GC: 0.4709 | Moran's I: -0.0040 | Diversity: 0.7367
+2025-04-23 03:30:20,989 - INFO - Epoch 103/500 | Time: 67.11s | G Loss: 11.7924 | D Loss: -1.4770 | W Dist: 1.7056 | GP: 0.0229 | GC: 0.4801 | Moran's I: 0.0153 | Diversity: 0.7384
+2025-04-23 03:31:29,086 - INFO - Epoch 104/500 | Time: 68.10s | G Loss: 11.3293 | D Loss: -1.5055 | W Dist: 1.7397 | GP: 0.0234 | GC: 0.4673 | Moran's I: 0.0016 | Diversity: 0.7395
+2025-04-23 03:32:37,034 - INFO - Epoch 105/500 | Time: 67.95s | G Loss: 11.4280 | D Loss: -1.5086 | W Dist: 1.7448 | GP: 0.0236 | GC: 0.4886 | Moran's I: -0.0014 | Diversity: 0.7483
+2025-04-23 03:33:43,731 - INFO - Epoch 106/500 | Time: 66.70s | G Loss: 11.2787 | D Loss: -1.5218 | W Dist: 1.7653 | GP: 0.0244 | GC: 0.4335 | Moran's I: -0.0179 | Diversity: 0.7393
+2025-04-23 03:34:51,988 - INFO - Epoch 107/500 | Time: 68.26s | G Loss: 11.3956 | D Loss: -1.5607 | W Dist: 1.8084 | GP: 0.0248 | GC: 0.4762 | Moran's I: -0.0119 | Diversity: 0.7396
+2025-04-23 03:36:01,009 - INFO - Epoch 108/500 | Time: 69.02s | G Loss: 11.7110 | D Loss: -1.5608 | W Dist: 1.8075 | GP: 0.0247 | GC: 0.4822 | Moran's I: 0.0024 | Diversity: 0.7436
+2025-04-23 03:37:07,777 - INFO - Epoch 109/500 | Time: 66.76s | G Loss: 11.2439 | D Loss: -1.5646 | W Dist: 1.8134 | GP: 0.0249 | GC: 0.4448 | Moran's I: 0.0010 | Diversity: 0.7410
+2025-04-23 03:38:15,459 - INFO - Epoch 110/500 | Time: 67.68s | G Loss: 11.2691 | D Loss: -1.5656 | W Dist: 1.8091 | GP: 0.0244 | GC: 0.4859 | Moran's I: -0.0130 | Diversity: 0.7416
+2025-04-23 03:38:15,582 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_110.pt
+2025-04-23 03:39:24,519 - INFO - Epoch 111/500 | Time: 68.94s | G Loss: 10.9654 | D Loss: -1.5798 | W Dist: 1.8277 | GP: 0.0248 | GC: 0.4245 | Moran's I: 0.0187 | Diversity: 0.7412
+2025-04-23 03:40:32,621 - INFO - Epoch 112/500 | Time: 68.10s | G Loss: 10.7360 | D Loss: -1.5796 | W Dist: 1.8354 | GP: 0.0256 | GC: 0.4485 | Moran's I: -0.0088 | Diversity: 0.7420
+2025-04-23 03:41:40,094 - INFO - Epoch 113/500 | Time: 67.47s | G Loss: 10.5010 | D Loss: -1.5664 | W Dist: 1.8223 | GP: 0.0256 | GC: 0.4450 | Moran's I: -0.0060 | Diversity: 0.7429
+2025-04-23 03:42:48,992 - INFO - Epoch 114/500 | Time: 68.90s | G Loss: 10.1308 | D Loss: -1.5792 | W Dist: 1.8316 | GP: 0.0252 | GC: 0.4997 | Moran's I: -0.0001 | Diversity: 0.7433
+2025-04-23 03:43:57,034 - INFO - Epoch 115/500 | Time: 68.04s | G Loss: 10.3552 | D Loss: -1.5816 | W Dist: 1.8367 | GP: 0.0255 | GC: 0.4659 | Moran's I: -0.0016 | Diversity: 0.7424
+2025-04-23 03:45:02,600 - INFO - Epoch 116/500 | Time: 65.57s | G Loss: 10.9131 | D Loss: -1.6133 | W Dist: 1.8756 | GP: 0.0262 | GC: 0.4932 | Moran's I: 0.0104 | Diversity: 0.7417
+2025-04-23 03:46:09,524 - INFO - Epoch 117/500 | Time: 66.92s | G Loss: 11.3712 | D Loss: -1.6218 | W Dist: 1.8805 | GP: 0.0259 | GC: 0.4587 | Moran's I: 0.0222 | Diversity: 0.7437
+2025-04-23 03:47:18,229 - INFO - Epoch 118/500 | Time: 68.70s | G Loss: 11.3282 | D Loss: -1.5932 | W Dist: 1.8531 | GP: 0.0260 | GC: 0.5003 | Moran's I: 0.0132 | Diversity: 0.7445
+2025-04-23 03:48:26,001 - INFO - Epoch 119/500 | Time: 67.77s | G Loss: 11.1188 | D Loss: -1.5879 | W Dist: 1.8464 | GP: 0.0259 | GC: 0.4485 | Moran's I: 0.0215 | Diversity: 0.7441
+2025-04-23 03:49:32,661 - INFO - Epoch 120/500 | Time: 66.66s | G Loss: 10.8722 | D Loss: -1.5878 | W Dist: 1.8441 | GP: 0.0256 | GC: 0.4914 | Moran's I: -0.0064 | Diversity: 0.7466
+2025-04-23 03:49:32,752 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_120.pt
+2025-04-23 03:50:40,429 - INFO - Epoch 121/500 | Time: 67.68s | G Loss: 11.2684 | D Loss: -1.6140 | W Dist: 1.8718 | GP: 0.0258 | GC: 0.4839 | Moran's I: 0.0079 | Diversity: 0.7460
+2025-04-23 03:51:48,980 - INFO - Epoch 122/500 | Time: 68.55s | G Loss: 10.9727 | D Loss: -1.6479 | W Dist: 1.9135 | GP: 0.0266 | GC: 0.4765 | Moran's I: -0.0040 | Diversity: 0.7443
+2025-04-23 03:52:55,485 - INFO - Epoch 123/500 | Time: 66.51s | G Loss: 10.0989 | D Loss: -1.6307 | W Dist: 1.9036 | GP: 0.0273 | GC: 0.4869 | Moran's I: -0.0109 | Diversity: 0.7470
+2025-04-23 03:54:02,267 - INFO - Epoch 124/500 | Time: 66.78s | G Loss: 10.0658 | D Loss: -1.6236 | W Dist: 1.8974 | GP: 0.0274 | GC: 0.5054 | Moran's I: 0.0041 | Diversity: 0.7448
+2025-04-23 03:55:10,511 - INFO - Epoch 125/500 | Time: 68.24s | G Loss: 10.4513 | D Loss: -1.6311 | W Dist: 1.9005 | GP: 0.0269 | GC: 0.4914 | Moran's I: 0.0168 | Diversity: 0.7452
+2025-04-23 03:56:18,905 - INFO - Epoch 126/500 | Time: 68.39s | G Loss: 11.4012 | D Loss: -1.6643 | W Dist: 1.9357 | GP: 0.0271 | GC: 0.5049 | Moran's I: -0.0047 | Diversity: 0.7484
+2025-04-23 03:57:25,011 - INFO - Epoch 127/500 | Time: 66.11s | G Loss: 11.4837 | D Loss: -1.6617 | W Dist: 1.9385 | GP: 0.0277 | GC: 0.4793 | Moran's I: -0.0392 | Diversity: 0.7454
+2025-04-23 03:58:32,604 - INFO - Epoch 128/500 | Time: 67.59s | G Loss: 10.5188 | D Loss: -1.6497 | W Dist: 1.9209 | GP: 0.0271 | GC: 0.4814 | Moran's I: -0.0002 | Diversity: 0.7449
+2025-04-23 03:59:41,077 - INFO - Epoch 129/500 | Time: 68.47s | G Loss: 11.0348 | D Loss: -1.6573 | W Dist: 1.9276 | GP: 0.0270 | GC: 0.4626 | Moran's I: 0.0108 | Diversity: 0.7417
+2025-04-23 04:00:47,809 - INFO - Epoch 130/500 | Time: 66.73s | G Loss: 10.9106 | D Loss: -1.6652 | W Dist: 1.9406 | GP: 0.0275 | GC: 0.4392 | Moran's I: -0.0127 | Diversity: 0.7392
+2025-04-23 04:00:47,917 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_130.pt
+2025-04-23 04:01:55,159 - INFO - Epoch 131/500 | Time: 67.24s | G Loss: 11.3478 | D Loss: -1.6861 | W Dist: 1.9569 | GP: 0.0271 | GC: 0.4680 | Moran's I: -0.0222 | Diversity: 0.7427
+2025-04-23 04:03:03,631 - INFO - Epoch 132/500 | Time: 68.47s | G Loss: 11.1281 | D Loss: -1.6518 | W Dist: 1.9186 | GP: 0.0267 | GC: 0.4875 | Moran's I: -0.0007 | Diversity: 0.7411
+2025-04-23 04:04:12,348 - INFO - Epoch 133/500 | Time: 68.72s | G Loss: 10.8042 | D Loss: -1.6734 | W Dist: 1.9536 | GP: 0.0280 | GC: 0.4657 | Moran's I: 0.0190 | Diversity: 0.7431
+2025-04-23 04:05:19,164 - INFO - Epoch 134/500 | Time: 66.82s | G Loss: 10.6776 | D Loss: -1.6813 | W Dist: 1.9629 | GP: 0.0282 | GC: 0.5095 | Moran's I: 0.0106 | Diversity: 0.7439
+2025-04-23 04:06:27,065 - INFO - Epoch 135/500 | Time: 67.90s | G Loss: 10.4127 | D Loss: -1.6815 | W Dist: 1.9628 | GP: 0.0281 | GC: 0.4552 | Moran's I: 0.0131 | Diversity: 0.7460
+2025-04-23 04:07:36,464 - INFO - Epoch 136/500 | Time: 69.40s | G Loss: 10.1782 | D Loss: -1.6594 | W Dist: 1.9467 | GP: 0.0287 | GC: 0.4727 | Moran's I: 0.0329 | Diversity: 0.7467
+2025-04-23 04:08:43,765 - INFO - Epoch 137/500 | Time: 67.30s | G Loss: 10.0767 | D Loss: -1.6661 | W Dist: 1.9454 | GP: 0.0279 | GC: 0.4561 | Moran's I: 0.0441 | Diversity: 0.7412
+2025-04-23 04:09:50,234 - INFO - Epoch 138/500 | Time: 66.47s | G Loss: 10.0355 | D Loss: -1.7085 | W Dist: 1.9966 | GP: 0.0288 | GC: 0.4549 | Moran's I: 0.0182 | Diversity: 0.7442
+2025-04-23 04:10:58,749 - INFO - Epoch 139/500 | Time: 68.51s | G Loss: 9.7489 | D Loss: -1.7189 | W Dist: 2.0142 | GP: 0.0295 | GC: 0.5053 | Moran's I: 0.0067 | Diversity: 0.7449
+2025-04-23 04:12:07,275 - INFO - Epoch 140/500 | Time: 68.53s | G Loss: 9.7168 | D Loss: -1.7164 | W Dist: 2.0058 | GP: 0.0289 | GC: 0.4582 | Moran's I: 0.0402 | Diversity: 0.7457
+2025-04-23 04:12:07,395 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_140.pt
+2025-04-23 04:13:14,067 - INFO - Epoch 141/500 | Time: 66.67s | G Loss: 10.0399 | D Loss: -1.7235 | W Dist: 2.0219 | GP: 0.0298 | GC: 0.4319 | Moran's I: 0.0356 | Diversity: 0.7436
+2025-04-23 04:14:20,195 - INFO - Epoch 142/500 | Time: 66.13s | G Loss: 10.0268 | D Loss: -1.7211 | W Dist: 2.0159 | GP: 0.0295 | GC: 0.4895 | Moran's I: 0.0294 | Diversity: 0.7442
+2025-04-23 04:15:27,681 - INFO - Epoch 143/500 | Time: 67.49s | G Loss: 9.7678 | D Loss: -1.7381 | W Dist: 2.0294 | GP: 0.0291 | GC: 0.4795 | Moran's I: 0.0155 | Diversity: 0.7443
+2025-04-23 04:16:34,417 - INFO - Epoch 144/500 | Time: 66.74s | G Loss: 10.1210 | D Loss: -1.7046 | W Dist: 1.9988 | GP: 0.0294 | GC: 0.4539 | Moran's I: 0.0104 | Diversity: 0.7361
+2025-04-23 04:17:40,384 - INFO - Epoch 145/500 | Time: 65.97s | G Loss: 9.8556 | D Loss: -1.7900 | W Dist: 2.0954 | GP: 0.0305 | GC: 0.4497 | Moran's I: 0.0206 | Diversity: 0.7404
+2025-04-23 04:18:48,908 - INFO - Epoch 146/500 | Time: 68.52s | G Loss: 9.8395 | D Loss: -1.7354 | W Dist: 2.0346 | GP: 0.0299 | GC: 0.5129 | Moran's I: 0.0255 | Diversity: 0.7424
+2025-04-23 04:19:57,668 - INFO - Epoch 147/500 | Time: 68.76s | G Loss: 9.8473 | D Loss: -1.7239 | W Dist: 2.0209 | GP: 0.0297 | GC: 0.4762 | Moran's I: 0.0168 | Diversity: 0.7431
+2025-04-23 04:21:04,381 - INFO - Epoch 148/500 | Time: 66.71s | G Loss: 10.5961 | D Loss: -1.7404 | W Dist: 2.0396 | GP: 0.0299 | GC: 0.4330 | Moran's I: 0.0034 | Diversity: 0.7388
+2025-04-23 04:22:11,835 - INFO - Epoch 149/500 | Time: 67.45s | G Loss: 10.4704 | D Loss: -1.7502 | W Dist: 2.0470 | GP: 0.0297 | GC: 0.4553 | Moran's I: 0.0009 | Diversity: 0.7420
+2025-04-23 04:23:20,025 - INFO - Epoch 150/500 | Time: 68.19s | G Loss: 10.2579 | D Loss: -1.7574 | W Dist: 2.0540 | GP: 0.0297 | GC: 0.4543 | Moran's I: 0.0066 | Diversity: 0.7447
+2025-04-23 04:23:20,116 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_150.pt
+2025-04-23 04:24:27,810 - INFO - Epoch 151/500 | Time: 67.69s | G Loss: 9.9956 | D Loss: -1.7478 | W Dist: 2.0558 | GP: 0.0308 | GC: 0.4490 | Moran's I: -0.0050 | Diversity: 0.7414
+2025-04-23 04:25:34,069 - INFO - Epoch 152/500 | Time: 66.26s | G Loss: 10.0117 | D Loss: -1.7592 | W Dist: 2.0567 | GP: 0.0297 | GC: 0.4329 | Moran's I: 0.0183 | Diversity: 0.7426
+2025-04-23 04:26:42,608 - INFO - Epoch 153/500 | Time: 68.54s | G Loss: 9.6066 | D Loss: -1.7926 | W Dist: 2.1072 | GP: 0.0315 | GC: 0.4331 | Moran's I: 0.0186 | Diversity: 0.7431
+2025-04-23 04:27:51,816 - INFO - Epoch 154/500 | Time: 69.21s | G Loss: 9.6484 | D Loss: -1.7688 | W Dist: 2.0722 | GP: 0.0303 | GC: 0.4494 | Moran's I: 0.0112 | Diversity: 0.7436
+2025-04-23 04:28:58,068 - INFO - Epoch 155/500 | Time: 66.25s | G Loss: 9.3689 | D Loss: -1.7910 | W Dist: 2.0971 | GP: 0.0306 | GC: 0.4041 | Moran's I: 0.0263 | Diversity: 0.7382
+2025-04-23 04:30:04,835 - INFO - Epoch 156/500 | Time: 66.77s | G Loss: 9.3551 | D Loss: -1.7783 | W Dist: 2.0862 | GP: 0.0308 | GC: 0.3912 | Moran's I: 0.0175 | Diversity: 0.7379
+2025-04-23 04:31:12,781 - INFO - Epoch 157/500 | Time: 67.94s | G Loss: 8.9906 | D Loss: -1.7721 | W Dist: 2.0822 | GP: 0.0310 | GC: 0.4441 | Moran's I: 0.0200 | Diversity: 0.7433
+2025-04-23 04:32:20,853 - INFO - Epoch 158/500 | Time: 68.07s | G Loss: 9.2959 | D Loss: -1.7893 | W Dist: 2.0970 | GP: 0.0308 | GC: 0.4195 | Moran's I: 0.0158 | Diversity: 0.7400
+2025-04-23 04:33:27,230 - INFO - Epoch 159/500 | Time: 66.38s | G Loss: 9.5116 | D Loss: -1.7916 | W Dist: 2.0971 | GP: 0.0306 | GC: 0.4149 | Moran's I: 0.0318 | Diversity: 0.7416
+2025-04-23 04:34:35,034 - INFO - Epoch 160/500 | Time: 67.80s | G Loss: 9.2224 | D Loss: -1.8094 | W Dist: 2.1189 | GP: 0.0309 | GC: 0.4553 | Moran's I: 0.0014 | Diversity: 0.7427
+2025-04-23 04:34:35,153 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_160.pt
+2025-04-23 04:35:44,880 - INFO - Epoch 161/500 | Time: 69.73s | G Loss: 9.5335 | D Loss: -1.8177 | W Dist: 2.1352 | GP: 0.0317 | GC: 0.4293 | Moran's I: -0.0114 | Diversity: 0.7391
+2025-04-23 04:36:51,564 - INFO - Epoch 162/500 | Time: 66.68s | G Loss: 9.3205 | D Loss: -1.8138 | W Dist: 2.1209 | GP: 0.0307 | GC: 0.4499 | Moran's I: 0.0146 | Diversity: 0.7424
+2025-04-23 04:37:58,313 - INFO - Epoch 163/500 | Time: 66.75s | G Loss: 8.8461 | D Loss: -1.7942 | W Dist: 2.1100 | GP: 0.0316 | GC: 0.4044 | Moran's I: 0.0153 | Diversity: 0.7332
+2025-04-23 04:39:06,952 - INFO - Epoch 164/500 | Time: 68.64s | G Loss: 8.5449 | D Loss: -1.8193 | W Dist: 2.1353 | GP: 0.0316 | GC: 0.4199 | Moran's I: 0.0199 | Diversity: 0.7357
+2025-04-23 04:40:15,703 - INFO - Epoch 165/500 | Time: 68.75s | G Loss: 8.6266 | D Loss: -1.8458 | W Dist: 2.1653 | GP: 0.0320 | GC: 0.4300 | Moran's I: 0.0548 | Diversity: 0.7421
+2025-04-23 04:41:22,280 - INFO - Epoch 166/500 | Time: 66.58s | G Loss: 8.7284 | D Loss: -1.8530 | W Dist: 2.1754 | GP: 0.0322 | GC: 0.3729 | Moran's I: 0.0441 | Diversity: 0.7332
+2025-04-23 04:42:30,114 - INFO - Epoch 167/500 | Time: 67.83s | G Loss: 8.6308 | D Loss: -1.8301 | W Dist: 2.1425 | GP: 0.0312 | GC: 0.4623 | Moran's I: 0.0239 | Diversity: 0.7433
+2025-04-23 04:43:38,586 - INFO - Epoch 168/500 | Time: 68.47s | G Loss: 8.6027 | D Loss: -1.8249 | W Dist: 2.1499 | GP: 0.0325 | GC: 0.4685 | Moran's I: 0.0183 | Diversity: 0.7430
+2025-04-23 04:44:46,056 - INFO - Epoch 169/500 | Time: 67.47s | G Loss: 8.5157 | D Loss: -1.8715 | W Dist: 2.1905 | GP: 0.0319 | GC: 0.4624 | Moran's I: 0.0107 | Diversity: 0.7433
+2025-04-23 04:45:53,172 - INFO - Epoch 170/500 | Time: 67.12s | G Loss: 8.6381 | D Loss: -1.8722 | W Dist: 2.2019 | GP: 0.0330 | GC: 0.4507 | Moran's I: 0.0056 | Diversity: 0.7414
+2025-04-23 04:45:53,296 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_170.pt
+2025-04-23 04:47:01,320 - INFO - Epoch 171/500 | Time: 68.02s | G Loss: 8.7644 | D Loss: -1.8385 | W Dist: 2.1641 | GP: 0.0326 | GC: 0.4370 | Moran's I: 0.0090 | Diversity: 0.7416
+2025-04-23 04:48:10,108 - INFO - Epoch 172/500 | Time: 68.79s | G Loss: 8.8022 | D Loss: -1.8475 | W Dist: 2.1830 | GP: 0.0336 | GC: 0.4881 | Moran's I: -0.0125 | Diversity: 0.7394
+2025-04-23 04:49:17,124 - INFO - Epoch 173/500 | Time: 67.02s | G Loss: 8.2266 | D Loss: -1.8192 | W Dist: 2.1474 | GP: 0.0328 | GC: 0.4379 | Moran's I: 0.0173 | Diversity: 0.7422
+2025-04-23 04:50:24,726 - INFO - Epoch 174/500 | Time: 67.60s | G Loss: 8.8224 | D Loss: -1.8937 | W Dist: 2.2307 | GP: 0.0337 | GC: 0.4667 | Moran's I: 0.0145 | Diversity: 0.7443
+2025-04-23 04:51:33,813 - INFO - Epoch 175/500 | Time: 69.09s | G Loss: 9.2118 | D Loss: -1.8497 | W Dist: 2.1863 | GP: 0.0337 | GC: 0.4494 | Moran's I: 0.0175 | Diversity: 0.7412
+2025-04-23 04:52:40,933 - INFO - Epoch 176/500 | Time: 67.12s | G Loss: 9.2733 | D Loss: -1.8509 | W Dist: 2.1784 | GP: 0.0327 | GC: 0.4514 | Moran's I: 0.0186 | Diversity: 0.7428
+2025-04-23 04:53:47,056 - INFO - Epoch 177/500 | Time: 66.12s | G Loss: 9.3474 | D Loss: -1.8497 | W Dist: 2.1763 | GP: 0.0327 | GC: 0.4428 | Moran's I: 0.0225 | Diversity: 0.7420
+2025-04-23 04:54:55,271 - INFO - Epoch 178/500 | Time: 68.21s | G Loss: 9.1563 | D Loss: -1.8720 | W Dist: 2.1964 | GP: 0.0324 | GC: 0.4296 | Moran's I: 0.0204 | Diversity: 0.7397
+2025-04-23 04:56:04,172 - INFO - Epoch 179/500 | Time: 68.90s | G Loss: 8.8927 | D Loss: -1.8544 | W Dist: 2.1822 | GP: 0.0328 | GC: 0.4725 | Moran's I: 0.0201 | Diversity: 0.7421
+2025-04-23 04:57:10,506 - INFO - Epoch 180/500 | Time: 66.33s | G Loss: 8.8802 | D Loss: -1.8799 | W Dist: 2.2201 | GP: 0.0340 | GC: 0.4758 | Moran's I: 0.0137 | Diversity: 0.7422
+2025-04-23 04:57:10,622 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_180.pt
+2025-04-23 04:58:18,444 - INFO - Epoch 181/500 | Time: 67.82s | G Loss: 9.2018 | D Loss: -1.8746 | W Dist: 2.2109 | GP: 0.0336 | GC: 0.4338 | Moran's I: 0.0193 | Diversity: 0.7410
+2025-04-23 04:59:27,490 - INFO - Epoch 182/500 | Time: 69.05s | G Loss: 9.0338 | D Loss: -1.8736 | W Dist: 2.2160 | GP: 0.0342 | GC: 0.4333 | Moran's I: 0.0213 | Diversity: 0.7426
+2025-04-23 05:00:34,945 - INFO - Epoch 183/500 | Time: 67.45s | G Loss: 9.1025 | D Loss: -1.8966 | W Dist: 2.2301 | GP: 0.0334 | GC: 0.4764 | Moran's I: 0.0092 | Diversity: 0.7440
+2025-04-23 05:01:41,230 - INFO - Epoch 184/500 | Time: 66.28s | G Loss: 8.9807 | D Loss: -1.8756 | W Dist: 2.2104 | GP: 0.0335 | GC: 0.4411 | Moran's I: 0.0276 | Diversity: 0.7445
+2025-04-23 05:02:49,997 - INFO - Epoch 185/500 | Time: 68.77s | G Loss: 8.9982 | D Loss: -1.9088 | W Dist: 2.2493 | GP: 0.0340 | GC: 0.4364 | Moran's I: 0.0314 | Diversity: 0.7423
+2025-04-23 05:03:58,203 - INFO - Epoch 186/500 | Time: 68.21s | G Loss: 9.0522 | D Loss: -1.9120 | W Dist: 2.2447 | GP: 0.0333 | GC: 0.4349 | Moran's I: 0.0350 | Diversity: 0.7423
+2025-04-23 05:05:04,662 - INFO - Epoch 187/500 | Time: 66.46s | G Loss: 8.9996 | D Loss: -1.9146 | W Dist: 2.2557 | GP: 0.0341 | GC: 0.4618 | Moran's I: 0.0340 | Diversity: 0.7449
+2025-04-23 05:06:11,090 - INFO - Epoch 188/500 | Time: 66.43s | G Loss: 8.8104 | D Loss: -1.9186 | W Dist: 2.2631 | GP: 0.0345 | GC: 0.4291 | Moran's I: 0.0361 | Diversity: 0.7410
+2025-04-23 05:07:19,344 - INFO - Epoch 189/500 | Time: 68.25s | G Loss: 8.4806 | D Loss: -1.8970 | W Dist: 2.2395 | GP: 0.0342 | GC: 0.4218 | Moran's I: 0.0537 | Diversity: 0.7415
+2025-04-23 05:08:26,335 - INFO - Epoch 190/500 | Time: 66.99s | G Loss: 8.7271 | D Loss: -1.9216 | W Dist: 2.2666 | GP: 0.0345 | GC: 0.4007 | Moran's I: 0.0388 | Diversity: 0.7371
+2025-04-23 05:08:26,447 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_190.pt
+2025-04-23 05:09:33,158 - INFO - Epoch 191/500 | Time: 66.71s | G Loss: 8.9896 | D Loss: -1.9396 | W Dist: 2.2806 | GP: 0.0341 | GC: 0.4055 | Moran's I: 0.0552 | Diversity: 0.7381
+2025-04-23 05:10:41,176 - INFO - Epoch 192/500 | Time: 68.02s | G Loss: 8.8628 | D Loss: -1.9256 | W Dist: 2.2681 | GP: 0.0343 | GC: 0.4247 | Moran's I: 0.0294 | Diversity: 0.7404
+2025-04-23 05:11:50,137 - INFO - Epoch 193/500 | Time: 68.96s | G Loss: 8.7979 | D Loss: -1.9560 | W Dist: 2.3001 | GP: 0.0344 | GC: 0.4375 | Moran's I: 0.0492 | Diversity: 0.7423
+2025-04-23 05:12:57,257 - INFO - Epoch 194/500 | Time: 67.12s | G Loss: 9.0631 | D Loss: -1.9277 | W Dist: 2.2648 | GP: 0.0337 | GC: 0.4427 | Moran's I: 0.0257 | Diversity: 0.7413
+2025-04-23 05:14:03,684 - INFO - Epoch 195/500 | Time: 66.43s | G Loss: 8.5044 | D Loss: -1.9420 | W Dist: 2.2840 | GP: 0.0342 | GC: 0.4025 | Moran's I: 0.0417 | Diversity: 0.7373
+2025-04-23 05:15:12,087 - INFO - Epoch 196/500 | Time: 68.40s | G Loss: 8.2042 | D Loss: -1.9212 | W Dist: 2.2598 | GP: 0.0339 | GC: 0.4680 | Moran's I: 0.0132 | Diversity: 0.7421
+2025-04-23 05:16:19,642 - INFO - Epoch 197/500 | Time: 67.56s | G Loss: 7.9864 | D Loss: -1.9275 | W Dist: 2.2753 | GP: 0.0348 | GC: 0.4123 | Moran's I: 0.0544 | Diversity: 0.7410
+2025-04-23 05:17:25,880 - INFO - Epoch 198/500 | Time: 66.24s | G Loss: 8.1886 | D Loss: -1.9382 | W Dist: 2.2822 | GP: 0.0344 | GC: 0.4589 | Moran's I: 0.0255 | Diversity: 0.7425
+2025-04-23 05:18:33,941 - INFO - Epoch 199/500 | Time: 68.06s | G Loss: 7.9280 | D Loss: -1.9249 | W Dist: 2.2621 | GP: 0.0337 | GC: 0.4411 | Moran's I: 0.0209 | Diversity: 0.7435
+2025-04-23 05:19:43,239 - INFO - Epoch 200/500 | Time: 69.30s | G Loss: 7.9347 | D Loss: -1.9499 | W Dist: 2.2984 | GP: 0.0348 | GC: 0.4120 | Moran's I: 0.0386 | Diversity: 0.7400
+2025-04-23 05:19:43,333 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_200.pt
+2025-04-23 05:20:50,946 - INFO - Epoch 201/500 | Time: 67.61s | G Loss: 8.1688 | D Loss: -1.9661 | W Dist: 2.3175 | GP: 0.0351 | GC: 0.3935 | Moran's I: 0.0270 | Diversity: 0.7364
+2025-04-23 05:21:58,359 - INFO - Epoch 202/500 | Time: 67.41s | G Loss: 8.1587 | D Loss: -1.9960 | W Dist: 2.3564 | GP: 0.0360 | GC: 0.4945 | Moran's I: -0.0206 | Diversity: 0.7425
+2025-04-23 05:23:07,505 - INFO - Epoch 203/500 | Time: 69.15s | G Loss: 8.2208 | D Loss: -2.0190 | W Dist: 2.3723 | GP: 0.0353 | GC: 0.4325 | Moran's I: 0.0020 | Diversity: 0.7409
+2025-04-23 05:24:16,251 - INFO - Epoch 204/500 | Time: 68.75s | G Loss: 7.8812 | D Loss: -1.9802 | W Dist: 2.3319 | GP: 0.0352 | GC: 0.4725 | Moran's I: 0.0160 | Diversity: 0.7429
+2025-04-23 05:25:22,684 - INFO - Epoch 205/500 | Time: 66.43s | G Loss: 8.1066 | D Loss: -1.9915 | W Dist: 2.3473 | GP: 0.0356 | GC: 0.4696 | Moran's I: 0.0280 | Diversity: 0.7444
+2025-04-23 05:26:30,823 - INFO - Epoch 206/500 | Time: 68.14s | G Loss: 7.5510 | D Loss: -1.9674 | W Dist: 2.3207 | GP: 0.0353 | GC: 0.4522 | Moran's I: -0.0088 | Diversity: 0.7417
+2025-04-23 05:27:39,892 - INFO - Epoch 207/500 | Time: 69.07s | G Loss: 7.6943 | D Loss: -2.0154 | W Dist: 2.3759 | GP: 0.0360 | GC: 0.4336 | Moran's I: 0.0246 | Diversity: 0.7426
+2025-04-23 05:28:47,179 - INFO - Epoch 208/500 | Time: 67.29s | G Loss: 8.0760 | D Loss: -1.9871 | W Dist: 2.3377 | GP: 0.0351 | GC: 0.4477 | Moran's I: 0.0461 | Diversity: 0.7419
+2025-04-23 05:29:53,280 - INFO - Epoch 209/500 | Time: 66.10s | G Loss: 7.7976 | D Loss: -2.0335 | W Dist: 2.3973 | GP: 0.0364 | GC: 0.4640 | Moran's I: 0.0324 | Diversity: 0.7432
+2025-04-23 05:31:01,294 - INFO - Epoch 210/500 | Time: 68.01s | G Loss: 8.0209 | D Loss: -2.0094 | W Dist: 2.3633 | GP: 0.0354 | GC: 0.4438 | Moran's I: 0.0313 | Diversity: 0.7441
+2025-04-23 05:31:01,402 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_210.pt
+2025-04-23 05:32:09,477 - INFO - Epoch 211/500 | Time: 68.08s | G Loss: 7.7178 | D Loss: -1.9854 | W Dist: 2.3421 | GP: 0.0357 | GC: 0.4383 | Moran's I: 0.0048 | Diversity: 0.7411
+2025-04-23 05:33:16,138 - INFO - Epoch 212/500 | Time: 66.66s | G Loss: 7.6735 | D Loss: -2.0113 | W Dist: 2.3855 | GP: 0.0374 | GC: 0.4453 | Moran's I: 0.0208 | Diversity: 0.7410
+2025-04-23 05:34:23,290 - INFO - Epoch 213/500 | Time: 67.15s | G Loss: 7.6798 | D Loss: -1.9955 | W Dist: 2.3582 | GP: 0.0363 | GC: 0.4222 | Moran's I: 0.0418 | Diversity: 0.7410
+2025-04-23 05:35:32,090 - INFO - Epoch 214/500 | Time: 68.80s | G Loss: 7.9595 | D Loss: -2.0143 | W Dist: 2.3901 | GP: 0.0376 | GC: 0.4333 | Moran's I: 0.0536 | Diversity: 0.7418
+2025-04-23 05:36:39,153 - INFO - Epoch 215/500 | Time: 67.06s | G Loss: 7.8882 | D Loss: -1.9956 | W Dist: 2.3541 | GP: 0.0358 | GC: 0.4353 | Moran's I: 0.0577 | Diversity: 0.7426
+2025-04-23 05:37:45,706 - INFO - Epoch 216/500 | Time: 66.55s | G Loss: 7.5313 | D Loss: -1.9954 | W Dist: 2.3519 | GP: 0.0357 | GC: 0.4138 | Moran's I: 0.0416 | Diversity: 0.7402
+2025-04-23 05:38:53,508 - INFO - Epoch 217/500 | Time: 67.80s | G Loss: 7.3454 | D Loss: -2.0130 | W Dist: 2.3692 | GP: 0.0356 | GC: 0.3928 | Moran's I: 0.0213 | Diversity: 0.7355
+2025-04-23 05:40:02,178 - INFO - Epoch 218/500 | Time: 68.67s | G Loss: 7.3105 | D Loss: -2.0221 | W Dist: 2.3895 | GP: 0.0367 | GC: 0.3947 | Moran's I: 0.0493 | Diversity: 0.7369
+2025-04-23 05:41:09,168 - INFO - Epoch 219/500 | Time: 66.99s | G Loss: 7.7701 | D Loss: -2.0153 | W Dist: 2.3921 | GP: 0.0377 | GC: 0.4190 | Moran's I: 0.0465 | Diversity: 0.7398
+2025-04-23 05:42:16,777 - INFO - Epoch 220/500 | Time: 67.61s | G Loss: 7.7272 | D Loss: -2.0333 | W Dist: 2.3982 | GP: 0.0365 | GC: 0.4653 | Moran's I: 0.0456 | Diversity: 0.7457
+2025-04-23 05:42:16,899 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_220.pt
+2025-04-23 05:43:26,458 - INFO - Epoch 221/500 | Time: 69.56s | G Loss: 7.8816 | D Loss: -2.0373 | W Dist: 2.4069 | GP: 0.0370 | GC: 0.4521 | Moran's I: 0.0400 | Diversity: 0.7424
+2025-04-23 05:44:34,077 - INFO - Epoch 222/500 | Time: 67.62s | G Loss: 7.8200 | D Loss: -2.0219 | W Dist: 2.3855 | GP: 0.0364 | GC: 0.4490 | Moran's I: 0.0310 | Diversity: 0.7447
+2025-04-23 05:45:41,054 - INFO - Epoch 223/500 | Time: 66.98s | G Loss: 7.9156 | D Loss: -2.0335 | W Dist: 2.3986 | GP: 0.0365 | GC: 0.4586 | Moran's I: 0.0284 | Diversity: 0.7424
+2025-04-23 05:46:48,936 - INFO - Epoch 224/500 | Time: 67.88s | G Loss: 8.0574 | D Loss: -2.0896 | W Dist: 2.4702 | GP: 0.0381 | GC: 0.4765 | Moran's I: 0.0304 | Diversity: 0.7385
+2025-04-23 05:47:57,634 - INFO - Epoch 225/500 | Time: 68.70s | G Loss: 8.2618 | D Loss: -2.0981 | W Dist: 2.4830 | GP: 0.0385 | GC: 0.4617 | Moran's I: 0.0219 | Diversity: 0.7413
+2025-04-23 05:49:05,024 - INFO - Epoch 226/500 | Time: 67.39s | G Loss: 7.9435 | D Loss: -2.0211 | W Dist: 2.3850 | GP: 0.0364 | GC: 0.4727 | Moran's I: 0.0253 | Diversity: 0.7423
+2025-04-23 05:50:12,435 - INFO - Epoch 227/500 | Time: 67.41s | G Loss: 7.7533 | D Loss: -2.0103 | W Dist: 2.3754 | GP: 0.0365 | GC: 0.4443 | Moran's I: 0.0410 | Diversity: 0.7392
+2025-04-23 05:51:21,614 - INFO - Epoch 228/500 | Time: 69.18s | G Loss: 7.4844 | D Loss: -2.0633 | W Dist: 2.4336 | GP: 0.0370 | GC: 0.4446 | Moran's I: 0.0364 | Diversity: 0.7422
+2025-04-23 05:52:29,289 - INFO - Epoch 229/500 | Time: 67.67s | G Loss: 7.4561 | D Loss: -2.0273 | W Dist: 2.4002 | GP: 0.0373 | GC: 0.4927 | Moran's I: 0.0399 | Diversity: 0.7378
+2025-04-23 05:53:36,243 - INFO - Epoch 230/500 | Time: 66.95s | G Loss: 7.2290 | D Loss: -2.0291 | W Dist: 2.3978 | GP: 0.0369 | GC: 0.4519 | Moran's I: 0.0456 | Diversity: 0.7407
+2025-04-23 05:53:36,330 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_230.pt
+2025-04-23 05:54:44,892 - INFO - Epoch 231/500 | Time: 68.56s | G Loss: 6.8077 | D Loss: -2.0739 | W Dist: 2.4472 | GP: 0.0373 | GC: 0.4273 | Moran's I: 0.0572 | Diversity: 0.7389
+2025-04-23 05:55:53,836 - INFO - Epoch 232/500 | Time: 68.94s | G Loss: 6.6696 | D Loss: -2.0534 | W Dist: 2.4390 | GP: 0.0386 | GC: 0.4239 | Moran's I: 0.0502 | Diversity: 0.7383
+2025-04-23 05:57:01,370 - INFO - Epoch 233/500 | Time: 67.53s | G Loss: 7.3427 | D Loss: -2.0587 | W Dist: 2.4421 | GP: 0.0383 | GC: 0.4075 | Moran's I: 0.0427 | Diversity: 0.7371
+2025-04-23 05:58:08,206 - INFO - Epoch 234/500 | Time: 66.84s | G Loss: 7.6326 | D Loss: -2.0711 | W Dist: 2.4530 | GP: 0.0382 | GC: 0.3997 | Moran's I: 0.0213 | Diversity: 0.7347
+2025-04-23 05:59:17,256 - INFO - Epoch 235/500 | Time: 69.05s | G Loss: 7.3158 | D Loss: -2.0601 | W Dist: 2.4513 | GP: 0.0391 | GC: 0.4674 | Moran's I: 0.0333 | Diversity: 0.7400
+2025-04-23 06:00:25,899 - INFO - Epoch 236/500 | Time: 68.64s | G Loss: 7.5799 | D Loss: -2.0614 | W Dist: 2.4386 | GP: 0.0377 | GC: 0.4489 | Moran's I: 0.0084 | Diversity: 0.7420
+2025-04-23 06:01:32,796 - INFO - Epoch 237/500 | Time: 66.90s | G Loss: 7.9188 | D Loss: -2.0649 | W Dist: 2.4477 | GP: 0.0383 | GC: 0.4842 | Moran's I: 0.0142 | Diversity: 0.7399
+2025-04-23 06:02:41,191 - INFO - Epoch 238/500 | Time: 68.39s | G Loss: 7.5636 | D Loss: -2.1150 | W Dist: 2.5067 | GP: 0.0392 | GC: 0.4406 | Moran's I: 0.0368 | Diversity: 0.7403
+2025-04-23 06:03:49,837 - INFO - Epoch 239/500 | Time: 68.65s | G Loss: 7.9024 | D Loss: -2.1176 | W Dist: 2.5019 | GP: 0.0384 | GC: 0.4465 | Moran's I: 0.0180 | Diversity: 0.7434
+2025-04-23 06:04:57,098 - INFO - Epoch 240/500 | Time: 67.26s | G Loss: 7.0672 | D Loss: -2.0913 | W Dist: 2.4709 | GP: 0.0380 | GC: 0.4680 | Moran's I: 0.0022 | Diversity: 0.7472
+2025-04-23 06:04:57,213 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_240.pt
+2025-04-23 06:06:03,995 - INFO - Epoch 241/500 | Time: 66.78s | G Loss: 7.4448 | D Loss: -2.1090 | W Dist: 2.5033 | GP: 0.0394 | GC: 0.4681 | Moran's I: 0.0281 | Diversity: 0.7421
+2025-04-23 06:07:13,196 - INFO - Epoch 242/500 | Time: 69.20s | G Loss: 7.4281 | D Loss: -2.0981 | W Dist: 2.4788 | GP: 0.0381 | GC: 0.4638 | Moran's I: 0.0298 | Diversity: 0.7442
+2025-04-23 06:08:20,938 - INFO - Epoch 243/500 | Time: 67.74s | G Loss: 7.5062 | D Loss: -2.1308 | W Dist: 2.5212 | GP: 0.0390 | GC: 0.4654 | Moran's I: 0.0325 | Diversity: 0.7411
+2025-04-23 06:09:28,074 - INFO - Epoch 244/500 | Time: 67.14s | G Loss: 7.2274 | D Loss: -2.1206 | W Dist: 2.4994 | GP: 0.0379 | GC: 0.4305 | Moran's I: 0.0355 | Diversity: 0.7432
+2025-04-23 06:10:35,528 - INFO - Epoch 245/500 | Time: 67.45s | G Loss: 6.9643 | D Loss: -2.0766 | W Dist: 2.4550 | GP: 0.0378 | GC: 0.4799 | Moran's I: 0.0424 | Diversity: 0.7435
+2025-04-23 06:11:44,634 - INFO - Epoch 246/500 | Time: 69.11s | G Loss: 6.7259 | D Loss: -2.0953 | W Dist: 2.4779 | GP: 0.0383 | GC: 0.5321 | Moran's I: 0.0343 | Diversity: 0.7402
+2025-04-23 06:12:51,663 - INFO - Epoch 247/500 | Time: 67.03s | G Loss: 6.8545 | D Loss: -2.1111 | W Dist: 2.4940 | GP: 0.0383 | GC: 0.5551 | Moran's I: 0.0152 | Diversity: 0.7361
+2025-04-23 06:13:58,505 - INFO - Epoch 248/500 | Time: 66.84s | G Loss: 6.7389 | D Loss: -2.0634 | W Dist: 2.4531 | GP: 0.0390 | GC: 0.4959 | Moran's I: 0.0548 | Diversity: 0.7405
+2025-04-23 06:15:07,186 - INFO - Epoch 249/500 | Time: 68.68s | G Loss: 6.6013 | D Loss: -2.0988 | W Dist: 2.4741 | GP: 0.0375 | GC: 0.5177 | Moran's I: 0.0247 | Diversity: 0.7397
+2025-04-23 06:16:15,841 - INFO - Epoch 250/500 | Time: 68.65s | G Loss: 6.7791 | D Loss: -2.0927 | W Dist: 2.4719 | GP: 0.0379 | GC: 0.5033 | Moran's I: 0.0215 | Diversity: 0.7381
+2025-04-23 06:16:15,947 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_250.pt
+2025-04-23 06:17:22,795 - INFO - Epoch 251/500 | Time: 66.85s | G Loss: 6.6076 | D Loss: -2.1274 | W Dist: 2.5175 | GP: 0.0390 | GC: 0.4620 | Moran's I: 0.0387 | Diversity: 0.7397
+2025-04-23 06:18:30,902 - INFO - Epoch 252/500 | Time: 68.11s | G Loss: 6.4527 | D Loss: -2.1070 | W Dist: 2.4926 | GP: 0.0386 | GC: 0.4621 | Moran's I: 0.0501 | Diversity: 0.7419
+2025-04-23 06:19:39,776 - INFO - Epoch 253/500 | Time: 68.87s | G Loss: 6.6359 | D Loss: -2.0920 | W Dist: 2.4857 | GP: 0.0394 | GC: 0.4289 | Moran's I: 0.0290 | Diversity: 0.7372
+2025-04-23 06:20:47,195 - INFO - Epoch 254/500 | Time: 67.42s | G Loss: 6.5824 | D Loss: -2.1273 | W Dist: 2.5262 | GP: 0.0399 | GC: 0.4387 | Moran's I: 0.0313 | Diversity: 0.7397
+2025-04-23 06:21:53,891 - INFO - Epoch 255/500 | Time: 66.70s | G Loss: 6.6088 | D Loss: -2.1038 | W Dist: 2.4980 | GP: 0.0394 | GC: 0.4884 | Moran's I: 0.0254 | Diversity: 0.7376
+2025-04-23 06:23:03,329 - INFO - Epoch 256/500 | Time: 69.44s | G Loss: 6.5816 | D Loss: -2.0954 | W Dist: 2.4806 | GP: 0.0385 | GC: 0.4706 | Moran's I: 0.0503 | Diversity: 0.7423
+2025-04-23 06:24:12,116 - INFO - Epoch 257/500 | Time: 68.79s | G Loss: 6.6935 | D Loss: -2.1373 | W Dist: 2.5378 | GP: 0.0400 | GC: 0.5055 | Moran's I: 0.0195 | Diversity: 0.7383
+2025-04-23 06:25:18,890 - INFO - Epoch 258/500 | Time: 66.77s | G Loss: 6.5040 | D Loss: -2.0819 | W Dist: 2.4648 | GP: 0.0383 | GC: 0.4547 | Moran's I: 0.0589 | Diversity: 0.7421
+2025-04-23 06:26:26,595 - INFO - Epoch 259/500 | Time: 67.70s | G Loss: 6.5829 | D Loss: -2.1003 | W Dist: 2.4863 | GP: 0.0386 | GC: 0.4461 | Moran's I: 0.0407 | Diversity: 0.7413
+2025-04-23 06:27:35,343 - INFO - Epoch 260/500 | Time: 68.75s | G Loss: 6.3804 | D Loss: -2.1253 | W Dist: 2.5186 | GP: 0.0393 | GC: 0.4646 | Moran's I: 0.0384 | Diversity: 0.7412
+2025-04-23 06:27:35,462 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_260.pt
+2025-04-23 06:28:42,854 - INFO - Epoch 261/500 | Time: 67.39s | G Loss: 6.6195 | D Loss: -2.1111 | W Dist: 2.4945 | GP: 0.0383 | GC: 0.4999 | Moran's I: 0.0243 | Diversity: 0.7421
+2025-04-23 06:29:48,850 - INFO - Epoch 262/500 | Time: 66.00s | G Loss: 6.6287 | D Loss: -2.1082 | W Dist: 2.4962 | GP: 0.0388 | GC: 0.4632 | Moran's I: 0.0283 | Diversity: 0.7442
+2025-04-23 06:30:57,283 - INFO - Epoch 263/500 | Time: 68.43s | G Loss: 6.8033 | D Loss: -2.1376 | W Dist: 2.5229 | GP: 0.0385 | GC: 0.4809 | Moran's I: 0.0243 | Diversity: 0.7425
+2025-04-23 06:32:06,257 - INFO - Epoch 264/500 | Time: 68.97s | G Loss: 6.5604 | D Loss: -2.0971 | W Dist: 2.4907 | GP: 0.0394 | GC: 0.4675 | Moran's I: 0.0421 | Diversity: 0.7426
+2025-04-23 06:33:13,642 - INFO - Epoch 265/500 | Time: 67.38s | G Loss: 6.1296 | D Loss: -2.0999 | W Dist: 2.4835 | GP: 0.0384 | GC: 0.4733 | Moran's I: 0.0307 | Diversity: 0.7439
+2025-04-23 06:34:21,679 - INFO - Epoch 266/500 | Time: 68.04s | G Loss: 6.3257 | D Loss: -2.0910 | W Dist: 2.4874 | GP: 0.0396 | GC: 0.4687 | Moran's I: 0.0317 | Diversity: 0.7411
+2025-04-23 06:35:30,724 - INFO - Epoch 267/500 | Time: 69.05s | G Loss: 6.6674 | D Loss: -2.1149 | W Dist: 2.5058 | GP: 0.0391 | GC: 0.4708 | Moran's I: 0.0395 | Diversity: 0.7379
+2025-04-23 06:36:38,611 - INFO - Epoch 268/500 | Time: 67.89s | G Loss: 6.5780 | D Loss: -2.1082 | W Dist: 2.5034 | GP: 0.0395 | GC: 0.4931 | Moran's I: 0.0427 | Diversity: 0.7408
+2025-04-23 06:37:45,617 - INFO - Epoch 269/500 | Time: 67.01s | G Loss: 6.8403 | D Loss: -2.1149 | W Dist: 2.5082 | GP: 0.0393 | GC: 0.5115 | Moran's I: 0.0210 | Diversity: 0.7393
+2025-04-23 06:38:54,556 - INFO - Epoch 270/500 | Time: 68.94s | G Loss: 6.5647 | D Loss: -2.1000 | W Dist: 2.4979 | GP: 0.0398 | GC: 0.4881 | Moran's I: 0.0279 | Diversity: 0.7440
+2025-04-23 06:38:54,678 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_270.pt
+2025-04-23 06:40:03,907 - INFO - Epoch 271/500 | Time: 69.23s | G Loss: 6.4921 | D Loss: -2.0995 | W Dist: 2.4918 | GP: 0.0392 | GC: 0.4551 | Moran's I: 0.0131 | Diversity: 0.7435
+2025-04-23 06:41:10,823 - INFO - Epoch 272/500 | Time: 66.92s | G Loss: 6.5548 | D Loss: -2.1255 | W Dist: 2.5173 | GP: 0.0392 | GC: 0.5009 | Moran's I: 0.0313 | Diversity: 0.7405
+2025-04-23 06:42:18,592 - INFO - Epoch 273/500 | Time: 67.77s | G Loss: 6.5506 | D Loss: -2.0701 | W Dist: 2.4657 | GP: 0.0396 | GC: 0.4690 | Moran's I: 0.0362 | Diversity: 0.7406
+2025-04-23 06:43:27,883 - INFO - Epoch 274/500 | Time: 69.29s | G Loss: 6.5125 | D Loss: -2.1065 | W Dist: 2.4916 | GP: 0.0385 | GC: 0.5044 | Moran's I: 0.0170 | Diversity: 0.7399
+2025-04-23 06:44:35,259 - INFO - Epoch 275/500 | Time: 67.37s | G Loss: 6.4154 | D Loss: -2.1062 | W Dist: 2.4973 | GP: 0.0391 | GC: 0.4513 | Moran's I: 0.0339 | Diversity: 0.7422
+2025-04-23 06:45:41,258 - INFO - Epoch 276/500 | Time: 66.00s | G Loss: 6.4463 | D Loss: -2.1016 | W Dist: 2.4939 | GP: 0.0392 | GC: 0.4744 | Moran's I: 0.0399 | Diversity: 0.7403
+2025-04-23 06:46:48,783 - INFO - Epoch 277/500 | Time: 67.52s | G Loss: 5.7383 | D Loss: -2.1187 | W Dist: 2.5091 | GP: 0.0390 | GC: 0.4449 | Moran's I: 0.0574 | Diversity: 0.7400
+2025-04-23 06:47:57,560 - INFO - Epoch 278/500 | Time: 68.78s | G Loss: 5.7804 | D Loss: -2.1174 | W Dist: 2.5129 | GP: 0.0395 | GC: 0.4603 | Moran's I: 0.0321 | Diversity: 0.7439
+2025-04-23 06:49:04,052 - INFO - Epoch 279/500 | Time: 66.49s | G Loss: 5.5326 | D Loss: -2.1194 | W Dist: 2.5133 | GP: 0.0394 | GC: 0.4491 | Moran's I: 0.0328 | Diversity: 0.7408
+2025-04-23 06:50:11,069 - INFO - Epoch 280/500 | Time: 67.02s | G Loss: 5.4410 | D Loss: -2.0979 | W Dist: 2.4940 | GP: 0.0396 | GC: 0.4634 | Moran's I: 0.0246 | Diversity: 0.7401
+2025-04-23 06:50:11,186 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_280.pt
+2025-04-23 06:51:19,775 - INFO - Epoch 281/500 | Time: 68.59s | G Loss: 6.0105 | D Loss: -2.1549 | W Dist: 2.5616 | GP: 0.0407 | GC: 0.4150 | Moran's I: 0.0221 | Diversity: 0.7398
+2025-04-23 06:52:27,893 - INFO - Epoch 282/500 | Time: 68.12s | G Loss: 5.6522 | D Loss: -2.1266 | W Dist: 2.5217 | GP: 0.0395 | GC: 0.4192 | Moran's I: 0.0215 | Diversity: 0.7405
+2025-04-23 06:53:34,420 - INFO - Epoch 283/500 | Time: 66.53s | G Loss: 5.5529 | D Loss: -2.1287 | W Dist: 2.5253 | GP: 0.0397 | GC: 0.4259 | Moran's I: 0.0396 | Diversity: 0.7416
+2025-04-23 06:54:42,214 - INFO - Epoch 284/500 | Time: 67.79s | G Loss: 5.5888 | D Loss: -2.1162 | W Dist: 2.5105 | GP: 0.0394 | GC: 0.4590 | Moran's I: 0.0387 | Diversity: 0.7438
+2025-04-23 06:55:51,518 - INFO - Epoch 285/500 | Time: 69.30s | G Loss: 5.5035 | D Loss: -2.1313 | W Dist: 2.5321 | GP: 0.0401 | GC: 0.4636 | Moran's I: 0.0368 | Diversity: 0.7444
+2025-04-23 06:56:58,392 - INFO - Epoch 286/500 | Time: 66.87s | G Loss: 5.5333 | D Loss: -2.1091 | W Dist: 2.5056 | GP: 0.0396 | GC: 0.4799 | Moran's I: 0.0327 | Diversity: 0.7454
+2025-04-23 06:58:05,280 - INFO - Epoch 287/500 | Time: 66.89s | G Loss: 5.3975 | D Loss: -2.1540 | W Dist: 2.5577 | GP: 0.0404 | GC: 0.4453 | Moran's I: 0.0445 | Diversity: 0.7443
+2025-04-23 06:59:14,088 - INFO - Epoch 288/500 | Time: 68.81s | G Loss: 5.5742 | D Loss: -2.1323 | W Dist: 2.5355 | GP: 0.0403 | GC: 0.4359 | Moran's I: 0.0305 | Diversity: 0.7437
+2025-04-23 07:00:22,462 - INFO - Epoch 289/500 | Time: 68.37s | G Loss: 5.4938 | D Loss: -2.1638 | W Dist: 2.5694 | GP: 0.0406 | GC: 0.4366 | Moran's I: 0.0265 | Diversity: 0.7436
+2025-04-23 07:01:29,415 - INFO - Epoch 290/500 | Time: 66.95s | G Loss: 5.9313 | D Loss: -2.1664 | W Dist: 2.5739 | GP: 0.0408 | GC: 0.4347 | Moran's I: 0.0280 | Diversity: 0.7433
+2025-04-23 07:01:29,534 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_290.pt
+2025-04-23 07:02:37,192 - INFO - Epoch 291/500 | Time: 67.66s | G Loss: 5.6511 | D Loss: -2.1524 | W Dist: 2.5555 | GP: 0.0403 | GC: 0.4625 | Moran's I: 0.0204 | Diversity: 0.7441
+2025-04-23 07:03:46,133 - INFO - Epoch 292/500 | Time: 68.94s | G Loss: 5.8075 | D Loss: -2.1388 | W Dist: 2.5478 | GP: 0.0409 | GC: 0.4365 | Moran's I: 0.0239 | Diversity: 0.7381
+2025-04-23 07:04:53,340 - INFO - Epoch 293/500 | Time: 67.21s | G Loss: 5.7319 | D Loss: -2.1379 | W Dist: 2.5336 | GP: 0.0396 | GC: 0.4308 | Moran's I: 0.0191 | Diversity: 0.7409
+2025-04-23 07:06:00,539 - INFO - Epoch 294/500 | Time: 67.20s | G Loss: 6.0422 | D Loss: -2.1558 | W Dist: 2.5721 | GP: 0.0416 | GC: 0.4369 | Moran's I: 0.0176 | Diversity: 0.7404
+2025-04-23 07:07:09,821 - INFO - Epoch 295/500 | Time: 69.28s | G Loss: 5.7456 | D Loss: -2.1196 | W Dist: 2.5229 | GP: 0.0403 | GC: 0.4381 | Moran's I: 0.0244 | Diversity: 0.7405
+2025-04-23 07:08:18,818 - INFO - Epoch 296/500 | Time: 69.00s | G Loss: 5.8215 | D Loss: -2.1308 | W Dist: 2.5346 | GP: 0.0404 | GC: 0.4249 | Moran's I: 0.0280 | Diversity: 0.7435
+2025-04-23 07:09:25,394 - INFO - Epoch 297/500 | Time: 66.58s | G Loss: 5.7053 | D Loss: -2.1605 | W Dist: 2.5642 | GP: 0.0404 | GC: 0.4401 | Moran's I: 0.0649 | Diversity: 0.7446
+2025-04-23 07:10:32,576 - INFO - Epoch 298/500 | Time: 67.18s | G Loss: 5.9070 | D Loss: -2.2032 | W Dist: 2.6172 | GP: 0.0414 | GC: 0.4045 | Moran's I: 0.0356 | Diversity: 0.7405
+2025-04-23 07:11:41,848 - INFO - Epoch 299/500 | Time: 69.27s | G Loss: 5.6826 | D Loss: -2.1760 | W Dist: 2.5928 | GP: 0.0417 | GC: 0.4560 | Moran's I: 0.0206 | Diversity: 0.7461
+2025-04-23 07:12:49,427 - INFO - Epoch 300/500 | Time: 67.58s | G Loss: 5.8206 | D Loss: -2.2541 | W Dist: 2.7050 | GP: 0.0451 | GC: 0.4365 | Moran's I: 0.0070 | Diversity: 0.7420
+2025-04-23 07:12:49,584 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_300.pt
+2025-04-23 07:13:56,343 - INFO - Epoch 301/500 | Time: 66.76s | G Loss: 6.6445 | D Loss: -2.2633 | W Dist: 2.6960 | GP: 0.0433 | GC: 0.4523 | Moran's I: 0.0378 | Diversity: 0.7416
+2025-04-23 07:15:04,317 - INFO - Epoch 302/500 | Time: 67.97s | G Loss: 6.5184 | D Loss: -2.1922 | W Dist: 2.6003 | GP: 0.0408 | GC: 0.4449 | Moran's I: 0.0158 | Diversity: 0.7413
+2025-04-23 07:16:12,591 - INFO - Epoch 303/500 | Time: 68.27s | G Loss: 5.9626 | D Loss: -2.1535 | W Dist: 2.5593 | GP: 0.0406 | GC: 0.4440 | Moran's I: 0.0394 | Diversity: 0.7440
+2025-04-23 07:17:19,138 - INFO - Epoch 304/500 | Time: 66.55s | G Loss: 5.9237 | D Loss: -2.1628 | W Dist: 2.5571 | GP: 0.0394 | GC: 0.4475 | Moran's I: 0.0268 | Diversity: 0.7450
+2025-04-23 07:18:26,166 - INFO - Epoch 305/500 | Time: 67.03s | G Loss: 5.8791 | D Loss: -2.1787 | W Dist: 2.5802 | GP: 0.0402 | GC: 0.4691 | Moran's I: 0.0115 | Diversity: 0.7464
+2025-04-23 07:19:35,010 - INFO - Epoch 306/500 | Time: 68.84s | G Loss: 5.6960 | D Loss: -2.1638 | W Dist: 2.5609 | GP: 0.0397 | GC: 0.4911 | Moran's I: 0.0132 | Diversity: 0.7476
+2025-04-23 07:20:42,453 - INFO - Epoch 307/500 | Time: 67.44s | G Loss: 5.6083 | D Loss: -2.1724 | W Dist: 2.5719 | GP: 0.0399 | GC: 0.4783 | Moran's I: 0.0051 | Diversity: 0.7462
+2025-04-23 07:21:49,347 - INFO - Epoch 308/500 | Time: 66.89s | G Loss: 5.7815 | D Loss: -2.1722 | W Dist: 2.5771 | GP: 0.0405 | GC: 0.4932 | Moran's I: 0.0213 | Diversity: 0.7469
+2025-04-23 07:22:57,902 - INFO - Epoch 309/500 | Time: 68.55s | G Loss: 5.5433 | D Loss: -2.1848 | W Dist: 2.5968 | GP: 0.0412 | GC: 0.4675 | Moran's I: 0.0365 | Diversity: 0.7452
+2025-04-23 07:24:06,853 - INFO - Epoch 310/500 | Time: 68.95s | G Loss: 5.6079 | D Loss: -2.1765 | W Dist: 2.5827 | GP: 0.0406 | GC: 0.4749 | Moran's I: 0.0409 | Diversity: 0.7477
+2025-04-23 07:24:06,940 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_310.pt
+2025-04-23 07:25:14,077 - INFO - Epoch 311/500 | Time: 67.14s | G Loss: 5.2182 | D Loss: -2.1774 | W Dist: 2.5815 | GP: 0.0404 | GC: 0.5100 | Moran's I: 0.0436 | Diversity: 0.7474
+2025-04-23 07:26:21,606 - INFO - Epoch 312/500 | Time: 67.53s | G Loss: 5.2501 | D Loss: -2.1819 | W Dist: 2.5814 | GP: 0.0400 | GC: 0.4872 | Moran's I: 0.0280 | Diversity: 0.7449
+2025-04-23 07:27:31,021 - INFO - Epoch 313/500 | Time: 69.42s | G Loss: 5.0273 | D Loss: -2.2186 | W Dist: 2.6275 | GP: 0.0409 | GC: 0.4577 | Moran's I: 0.0446 | Diversity: 0.7473
+2025-04-23 07:28:37,887 - INFO - Epoch 314/500 | Time: 66.86s | G Loss: 5.0467 | D Loss: -2.2105 | W Dist: 2.6297 | GP: 0.0419 | GC: 0.4844 | Moran's I: 0.0471 | Diversity: 0.7477
+2025-04-23 07:29:44,174 - INFO - Epoch 315/500 | Time: 66.29s | G Loss: 5.0280 | D Loss: -2.1980 | W Dist: 2.6112 | GP: 0.0413 | GC: 0.4920 | Moran's I: 0.0316 | Diversity: 0.7473
+2025-04-23 07:30:52,905 - INFO - Epoch 316/500 | Time: 68.73s | G Loss: 4.8754 | D Loss: -2.1941 | W Dist: 2.6139 | GP: 0.0420 | GC: 0.4748 | Moran's I: 0.0402 | Diversity: 0.7491
+2025-04-23 07:32:02,259 - INFO - Epoch 317/500 | Time: 69.35s | G Loss: 4.7154 | D Loss: -2.2097 | W Dist: 2.6145 | GP: 0.0405 | GC: 0.4793 | Moran's I: 0.0500 | Diversity: 0.7471
+2025-04-23 07:33:09,969 - INFO - Epoch 318/500 | Time: 67.71s | G Loss: 4.9560 | D Loss: -2.2068 | W Dist: 2.6183 | GP: 0.0412 | GC: 0.5232 | Moran's I: 0.0098 | Diversity: 0.7400
+2025-04-23 07:34:17,508 - INFO - Epoch 319/500 | Time: 67.54s | G Loss: 4.9153 | D Loss: -2.2121 | W Dist: 2.6294 | GP: 0.0417 | GC: 0.4945 | Moran's I: 0.0498 | Diversity: 0.7449
+2025-04-23 07:35:26,338 - INFO - Epoch 320/500 | Time: 68.83s | G Loss: 5.1093 | D Loss: -2.2105 | W Dist: 2.6283 | GP: 0.0418 | GC: 0.5141 | Moran's I: 0.0208 | Diversity: 0.7436
+2025-04-23 07:35:26,443 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_320.pt
+2025-04-23 07:36:34,583 - INFO - Epoch 321/500 | Time: 68.14s | G Loss: 5.0088 | D Loss: -2.2109 | W Dist: 2.6337 | GP: 0.0423 | GC: 0.4890 | Moran's I: 0.0549 | Diversity: 0.7466
+2025-04-23 07:37:41,022 - INFO - Epoch 322/500 | Time: 66.44s | G Loss: 5.0095 | D Loss: -2.2146 | W Dist: 2.6342 | GP: 0.0420 | GC: 0.5159 | Moran's I: 0.0305 | Diversity: 0.7450
+2025-04-23 07:38:49,215 - INFO - Epoch 323/500 | Time: 68.19s | G Loss: 4.9329 | D Loss: -2.2183 | W Dist: 2.6353 | GP: 0.0417 | GC: 0.4955 | Moran's I: 0.0566 | Diversity: 0.7453
+2025-04-23 07:39:58,108 - INFO - Epoch 324/500 | Time: 68.89s | G Loss: 5.2514 | D Loss: -2.2165 | W Dist: 2.6287 | GP: 0.0412 | GC: 0.4789 | Moran's I: 0.0439 | Diversity: 0.7454
+2025-04-23 07:41:04,606 - INFO - Epoch 325/500 | Time: 66.50s | G Loss: 5.1544 | D Loss: -2.2122 | W Dist: 2.6287 | GP: 0.0416 | GC: 0.4491 | Moran's I: 0.0471 | Diversity: 0.7428
+2025-04-23 07:42:11,493 - INFO - Epoch 326/500 | Time: 66.89s | G Loss: 4.9750 | D Loss: -2.2321 | W Dist: 2.6469 | GP: 0.0415 | GC: 0.4751 | Moran's I: 0.0268 | Diversity: 0.7435
+2025-04-23 07:43:20,667 - INFO - Epoch 327/500 | Time: 69.17s | G Loss: 5.0466 | D Loss: -2.2603 | W Dist: 2.6892 | GP: 0.0429 | GC: 0.4276 | Moran's I: 0.0339 | Diversity: 0.7435
+2025-04-23 07:44:28,051 - INFO - Epoch 328/500 | Time: 67.38s | G Loss: 5.0522 | D Loss: -2.2220 | W Dist: 2.6519 | GP: 0.0430 | GC: 0.5296 | Moran's I: 0.0364 | Diversity: 0.7408
+2025-04-23 07:45:34,964 - INFO - Epoch 329/500 | Time: 66.91s | G Loss: 5.3638 | D Loss: -2.2065 | W Dist: 2.6227 | GP: 0.0416 | GC: 0.4958 | Moran's I: 0.0445 | Diversity: 0.7435
+2025-04-23 07:46:43,057 - INFO - Epoch 330/500 | Time: 68.09s | G Loss: 5.4944 | D Loss: -2.2297 | W Dist: 2.6506 | GP: 0.0421 | GC: 0.4739 | Moran's I: 0.0311 | Diversity: 0.7445
+2025-04-23 07:46:43,191 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_330.pt
+2025-04-23 07:47:52,758 - INFO - Epoch 331/500 | Time: 69.57s | G Loss: 5.3432 | D Loss: -2.2119 | W Dist: 2.6402 | GP: 0.0428 | GC: 0.5015 | Moran's I: 0.0522 | Diversity: 0.7422
+2025-04-23 07:49:00,076 - INFO - Epoch 332/500 | Time: 67.32s | G Loss: 5.5346 | D Loss: -2.2226 | W Dist: 2.6399 | GP: 0.0417 | GC: 0.4725 | Moran's I: 0.0336 | Diversity: 0.7457
+2025-04-23 07:50:07,411 - INFO - Epoch 333/500 | Time: 67.33s | G Loss: 5.1094 | D Loss: -2.2221 | W Dist: 2.6427 | GP: 0.0421 | GC: 0.5257 | Moran's I: 0.0304 | Diversity: 0.7388
+2025-04-23 07:51:17,013 - INFO - Epoch 334/500 | Time: 69.60s | G Loss: 5.4423 | D Loss: -2.2141 | W Dist: 2.6395 | GP: 0.0425 | GC: 0.4785 | Moran's I: 0.0065 | Diversity: 0.7438
+2025-04-23 07:52:25,361 - INFO - Epoch 335/500 | Time: 68.35s | G Loss: 5.5758 | D Loss: -2.2338 | W Dist: 2.6547 | GP: 0.0421 | GC: 0.4775 | Moran's I: 0.0283 | Diversity: 0.7438
+2025-04-23 07:53:31,948 - INFO - Epoch 336/500 | Time: 66.59s | G Loss: 5.7586 | D Loss: -2.2508 | W Dist: 2.6685 | GP: 0.0418 | GC: 0.4658 | Moran's I: 0.0094 | Diversity: 0.7428
+2025-04-23 07:54:40,840 - INFO - Epoch 337/500 | Time: 68.89s | G Loss: 5.8802 | D Loss: -2.2077 | W Dist: 2.6322 | GP: 0.0425 | GC: 0.4966 | Moran's I: 0.0230 | Diversity: 0.7424
+2025-04-23 07:55:50,795 - INFO - Epoch 338/500 | Time: 69.96s | G Loss: 5.6844 | D Loss: -2.1822 | W Dist: 2.5900 | GP: 0.0408 | GC: 0.5161 | Moran's I: 0.0429 | Diversity: 0.7441
+2025-04-23 07:56:58,024 - INFO - Epoch 339/500 | Time: 67.23s | G Loss: 5.6636 | D Loss: -2.2170 | W Dist: 2.6296 | GP: 0.0413 | GC: 0.4849 | Moran's I: 0.0514 | Diversity: 0.7458
+2025-04-23 07:58:05,030 - INFO - Epoch 340/500 | Time: 67.01s | G Loss: 5.2753 | D Loss: -2.1835 | W Dist: 2.5923 | GP: 0.0409 | GC: 0.5283 | Moran's I: 0.0376 | Diversity: 0.7442
+2025-04-23 07:58:05,139 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_340.pt
+2025-04-23 07:59:14,488 - INFO - Epoch 341/500 | Time: 69.35s | G Loss: 5.1033 | D Loss: -2.2084 | W Dist: 2.6279 | GP: 0.0419 | GC: 0.4684 | Moran's I: 0.0612 | Diversity: 0.7454
+2025-04-23 08:00:21,520 - INFO - Epoch 342/500 | Time: 67.03s | G Loss: 5.3733 | D Loss: -2.2063 | W Dist: 2.6228 | GP: 0.0416 | GC: 0.4661 | Moran's I: 0.0368 | Diversity: 0.7443
+2025-04-23 08:01:27,359 - INFO - Epoch 343/500 | Time: 65.84s | G Loss: 5.7713 | D Loss: -2.2256 | W Dist: 2.6394 | GP: 0.0414 | GC: 0.4627 | Moran's I: 0.0401 | Diversity: 0.7435
+2025-04-23 08:02:34,477 - INFO - Epoch 344/500 | Time: 67.12s | G Loss: 5.6528 | D Loss: -2.2101 | W Dist: 2.6274 | GP: 0.0417 | GC: 0.4855 | Moran's I: 0.0280 | Diversity: 0.7385
+2025-04-23 08:03:42,510 - INFO - Epoch 345/500 | Time: 68.03s | G Loss: 5.1988 | D Loss: -2.2072 | W Dist: 2.6154 | GP: 0.0408 | GC: 0.4583 | Moran's I: 0.0484 | Diversity: 0.7434
+2025-04-23 08:04:49,275 - INFO - Epoch 346/500 | Time: 66.76s | G Loss: 5.1985 | D Loss: -2.2072 | W Dist: 2.6268 | GP: 0.0420 | GC: 0.4659 | Moran's I: 0.0477 | Diversity: 0.7431
+2025-04-23 08:05:56,010 - INFO - Epoch 347/500 | Time: 66.73s | G Loss: 5.0686 | D Loss: -2.2076 | W Dist: 2.6187 | GP: 0.0411 | GC: 0.4651 | Moran's I: 0.0407 | Diversity: 0.7428
+2025-04-23 08:07:04,123 - INFO - Epoch 348/500 | Time: 68.11s | G Loss: 5.2701 | D Loss: -2.2380 | W Dist: 2.6585 | GP: 0.0421 | GC: 0.4604 | Moran's I: 0.0440 | Diversity: 0.7460
+2025-04-23 08:08:11,776 - INFO - Epoch 349/500 | Time: 67.65s | G Loss: 5.2879 | D Loss: -2.2362 | W Dist: 2.6614 | GP: 0.0425 | GC: 0.4707 | Moran's I: 0.0416 | Diversity: 0.7436
+2025-04-23 08:09:17,355 - INFO - Epoch 350/500 | Time: 65.58s | G Loss: 5.6003 | D Loss: -2.2194 | W Dist: 2.6416 | GP: 0.0422 | GC: 0.4741 | Moran's I: 0.0356 | Diversity: 0.7459
+2025-04-23 08:09:17,489 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_350.pt
+2025-04-23 08:10:24,993 - INFO - Epoch 351/500 | Time: 67.50s | G Loss: 5.1814 | D Loss: -2.2266 | W Dist: 2.6432 | GP: 0.0417 | GC: 0.4343 | Moran's I: 0.0498 | Diversity: 0.7420
+2025-04-23 08:13:18,818 - INFO - Epoch 352/500 | Time: 173.82s | G Loss: 5.4492 | D Loss: -2.2438 | W Dist: 2.6616 | GP: 0.0418 | GC: 0.4604 | Moran's I: 0.0320 | Diversity: 0.7421
+2025-04-23 08:16:29,401 - INFO - Epoch 353/500 | Time: 190.58s | G Loss: 5.5439 | D Loss: -2.2641 | W Dist: 2.6835 | GP: 0.0419 | GC: 0.4214 | Moran's I: 0.0429 | Diversity: 0.7380
+2025-04-23 08:19:39,879 - INFO - Epoch 354/500 | Time: 190.48s | G Loss: 5.5257 | D Loss: -2.2609 | W Dist: 2.6851 | GP: 0.0424 | GC: 0.4378 | Moran's I: 0.0441 | Diversity: 0.7396
+2025-04-23 08:22:52,620 - INFO - Epoch 355/500 | Time: 192.74s | G Loss: 5.3458 | D Loss: -2.2748 | W Dist: 2.6985 | GP: 0.0424 | GC: 0.4095 | Moran's I: 0.0781 | Diversity: 0.7355
+2025-04-23 08:26:04,523 - INFO - Epoch 356/500 | Time: 191.90s | G Loss: 5.6935 | D Loss: -2.2209 | W Dist: 2.6415 | GP: 0.0421 | GC: 0.3887 | Moran's I: 0.0298 | Diversity: 0.7334
+2025-04-23 08:29:16,031 - INFO - Epoch 357/500 | Time: 191.51s | G Loss: 5.5142 | D Loss: -2.2786 | W Dist: 2.7023 | GP: 0.0424 | GC: 0.4559 | Moran's I: 0.0290 | Diversity: 0.7439
+2025-04-23 08:32:26,664 - INFO - Epoch 358/500 | Time: 190.63s | G Loss: 5.5586 | D Loss: -2.2101 | W Dist: 2.6289 | GP: 0.0419 | GC: 0.3927 | Moran's I: 0.0384 | Diversity: 0.7359
+2025-04-23 08:35:37,946 - INFO - Epoch 359/500 | Time: 191.28s | G Loss: 5.5336 | D Loss: -2.2269 | W Dist: 2.6435 | GP: 0.0417 | GC: 0.4340 | Moran's I: 0.0279 | Diversity: 0.7440
+2025-04-23 08:36:56,963 - INFO - Epoch 360/500 | Time: 79.01s | G Loss: 5.5124 | D Loss: -2.2314 | W Dist: 2.6501 | GP: 0.0419 | GC: 0.4026 | Moran's I: 0.0183 | Diversity: 0.7379
+2025-04-23 08:36:57,110 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_360.pt
+2025-04-23 08:38:07,306 - INFO - Epoch 361/500 | Time: 70.19s | G Loss: 5.5827 | D Loss: -2.2019 | W Dist: 2.6100 | GP: 0.0408 | GC: 0.3925 | Moran's I: 0.0199 | Diversity: 0.7361
+2025-04-23 08:41:11,189 - INFO - Epoch 362/500 | Time: 183.88s | G Loss: 5.3377 | D Loss: -2.2334 | W Dist: 2.6532 | GP: 0.0420 | GC: 0.4055 | Moran's I: 0.0621 | Diversity: 0.7399
+2025-04-23 08:42:30,830 - INFO - Epoch 363/500 | Time: 79.64s | G Loss: 5.0983 | D Loss: -2.1837 | W Dist: 2.5957 | GP: 0.0412 | GC: 0.4585 | Moran's I: 0.0405 | Diversity: 0.7437
+2025-04-23 08:43:39,380 - INFO - Epoch 364/500 | Time: 68.55s | G Loss: 5.1680 | D Loss: -2.2075 | W Dist: 2.6258 | GP: 0.0418 | GC: 0.3962 | Moran's I: 0.0105 | Diversity: 0.7386
+2025-04-23 08:44:46,251 - INFO - Epoch 365/500 | Time: 66.87s | G Loss: 5.3289 | D Loss: -2.2152 | W Dist: 2.6286 | GP: 0.0413 | GC: 0.4156 | Moran's I: 0.0343 | Diversity: 0.7408
+2025-04-23 08:45:53,313 - INFO - Epoch 366/500 | Time: 67.06s | G Loss: 5.2557 | D Loss: -2.1976 | W Dist: 2.6072 | GP: 0.0410 | GC: 0.3828 | Moran's I: 0.0264 | Diversity: 0.7318
+2025-04-23 08:47:01,022 - INFO - Epoch 367/500 | Time: 67.71s | G Loss: 4.9652 | D Loss: -2.2235 | W Dist: 2.6366 | GP: 0.0413 | GC: 0.4155 | Moran's I: 0.0345 | Diversity: 0.7393
+2025-04-23 08:49:10,334 - INFO - Epoch 368/500 | Time: 129.31s | G Loss: 4.8331 | D Loss: -2.2242 | W Dist: 2.6429 | GP: 0.0419 | GC: 0.3931 | Moran's I: 0.0246 | Diversity: 0.7360
+2025-04-23 08:50:19,197 - INFO - Epoch 369/500 | Time: 68.86s | G Loss: 5.1163 | D Loss: -2.2229 | W Dist: 2.6383 | GP: 0.0415 | GC: 0.4247 | Moran's I: 0.0396 | Diversity: 0.7415
+2025-04-23 08:51:28,491 - INFO - Epoch 370/500 | Time: 69.29s | G Loss: 4.8302 | D Loss: -2.2202 | W Dist: 2.6425 | GP: 0.0422 | GC: 0.4555 | Moran's I: -0.0022 | Diversity: 0.7413
+2025-04-23 08:51:28,620 - INFO - Checkpoint saved to checkpoints/improved_dna_gan\checkpoint_epoch_370.pt
+2025-04-23 18:22:53,075 - INFO - Arguments: Namespace(fasta_file='data/preprocessed_dna_sequences.fasta', seq_len=150, noise_dim=100, hidden_dim=512, num_layers=2, num_epochs=500, batch_size=64, lr_g=0.0001, lr_d=0.0001, temperature=1.0, n_critic=5, lambda_gp=10.0, checkpoint_dir='checkpoints/improved_dna_gan', log_interval=1, save_interval=10, resume='checkpoints/improved_dna_gan/checkpoint_epoch_350.pt', seed=42, no_cuda=False, num_workers=4)
+2025-04-23 18:23:00,529 - INFO - Generator architecture:
+ImprovedGenerator(
+  (fc_hidden): Linear(in_features=100, out_features=1024, bias=True)
+  (fc_cell): Linear(in_features=100, out_features=1024, bias=True)
+  (lstm): LSTM(512, 512, num_layers=2, batch_first=True, dropout=0.2)
+  (attention): SelfAttention(
+    (query): Linear(in_features=512, out_features=512, bias=True)
+    (key): Linear(in_features=512, out_features=512, bias=True)
+    (value): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  (fc): Linear(in_features=512, out_features=4, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 18:23:00,530 - INFO - Discriminator architecture:
+ImprovedDiscriminator(
+  (conv1): Conv1d(4, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv2): Conv1d(64, 128, kernel_size=(3,), stride=(1,), padding=(1,))
+  (conv3): Conv1d(128, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+  (pool): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (fc1): Linear(in_features=4608, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=1, bias=True)
+  (layer_norm1): LayerNorm((64, 150), eps=1e-05, elementwise_affine=True)
+  (layer_norm2): LayerNorm((128, 75), eps=1e-05, elementwise_affine=True)
+  (layer_norm3): LayerNorm((256, 37), eps=1e-05, elementwise_affine=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+2025-04-23 18:23:00,652 - INFO - Resumed training from epoch 350
+2025-04-23 18:27:16,801 - INFO - Epoch 351/850 | Time: 254.22s | G Loss: 5.2175 | D Loss: -2.2199 | W Dist: 2.6381 | GP: 0.0418 | GC: 0.4340 | Moran's I: 0.0287 | Diversity: 0.7424
+2025-04-23 18:32:56,553 - INFO - Epoch 352/850 | Time: 339.75s | G Loss: 5.6308 | D Loss: -2.2550 | W Dist: 2.7221 | GP: 0.0467 | GC: 0.4622 | Moran's I: 0.0156 | Diversity: 0.7416
