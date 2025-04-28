@@ -29,6 +29,17 @@ st.set_page_config(
 # Custom CSS for a more professional biotech look
 st.markdown("""
 <style>
+    /* Hide the top orange/red bar */
+    header {
+        visibility: hidden;
+    }
+
+    /* Remove the extra space that the hidden header would occupy */
+    .block-container {
+        padding-top: 1rem;
+        margin-top: 0;
+    }
+
     /* Main background and text */
     .main {
         background-color: #0a192f;
@@ -191,6 +202,16 @@ st.markdown("""
     /* Ensure all text is visible */
     p, span, div {
         color: #e6f1ff;
+    }
+
+    /* Hide any other potential top bars or decorations */
+    .stDeployButton, [data-testid="stToolbar"], [data-testid="stDecoration"], [data-testid="baseButton-headerNoPadding"] {
+        display: none !important;
+    }
+
+    /* Ensure no colored borders at the top */
+    .main .block-container {
+        border-top: none !important;
     }
 </style>
 """, unsafe_allow_html=True)
