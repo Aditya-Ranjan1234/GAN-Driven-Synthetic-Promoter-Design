@@ -29,12 +29,41 @@ st.set_page_config(
 # Custom CSS for a more professional biotech look
 st.markdown("""
 <style>
+    /* Main background and text */
     .main {
         background-color: #0a192f;
         color: #e6f1ff;
     }
+
+    /* DataFrames and tables */
+    .stDataFrame {
+        background-color: #172a45 !important;
+    }
+    .stDataFrame td, .stDataFrame th {
+        background-color: #172a45 !important;
+        color: #e6f1ff !important;
+        border-color: #2d4a77 !important;
+    }
+    .stDataFrame [data-testid="stVerticalBlock"] {
+        background-color: #172a45 !important;
+    }
+    div[data-testid="stTable"] table {
+        background-color: #172a45 !important;
+        color: #e6f1ff !important;
+    }
+    div[data-testid="stTable"] th {
+        background-color: #1e3a8a !important;
+        color: #e6f1ff !important;
+    }
+    div[data-testid="stTable"] td {
+        background-color: #172a45 !important;
+        color: #e6f1ff !important;
+    }
+
+    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 2px;
+        background-color: #0a192f;
     }
     .stTabs [data-baseweb="tab"] {
         background-color: #172a45;
@@ -47,31 +76,33 @@ st.markdown("""
         color: #0a192f;
         font-weight: 600;
     }
-    h1 {
-        color: #64ffda;
-        font-weight: 700;
-        font-size: 2.2rem;
+    .stTabs [data-baseweb="tab-panel"] {
+        background-color: #0a192f;
     }
-    h2 {
+
+    /* Headers */
+    h1, h2, h3, h4, h5, h6 {
         color: #64ffda;
         font-weight: 600;
+    }
+    h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+    }
+    h2 {
         font-size: 1.8rem;
     }
     h3 {
-        color: #64ffda;
-        font-weight: 600;
         font-size: 1.4rem;
     }
+
+    /* Alerts */
     .stAlert {
         background-color: #172a45;
         border: 1px solid #64ffda;
     }
-    .stDataFrame {
-        background-color: #172a45;
-    }
-    .css-1aumxhk {
-        background-color: #172a45;
-    }
+
+    /* Buttons */
     .stButton>button {
         background-color: #64ffda;
         color: #0a192f;
@@ -85,7 +116,9 @@ st.markdown("""
         background-color: #4fd1b8;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-    .css-1v3fvcr {
+
+    /* Layout elements */
+    .css-1v3fvcr, .css-18ni7ap {
         background-color: #0a192f;
     }
     .css-18e3th9 {
@@ -98,15 +131,23 @@ st.markdown("""
     .css-12oz5g7 {
         padding-top: 2rem;
     }
+    .css-1aumxhk, .css-keje6w {
+        background-color: #172a45;
+    }
+
+    /* Radio buttons and checkboxes */
+    .stRadio label, .stCheckbox label {
+        color: #e6f1ff;
+    }
 
     /* Sidebar styling */
-    .css-1d391kg {
+    .css-1d391kg, [data-testid="stSidebar"] {
         background-color: #172a45;
     }
 
     /* Plots */
-    .js-plotly-plot {
-        background-color: #172a45;
+    .js-plotly-plot, [data-testid="stDecoration"] {
+        background-color: #172a45 !important;
         border-radius: 8px;
         padding: 10px;
     }
@@ -133,6 +174,23 @@ st.markdown("""
         font-size: 1.8rem;
         font-weight: 700;
         color: #64ffda;
+    }
+
+    /* Sliders and selectors */
+    .stSlider [data-baseweb="slider"] {
+        background-color: #172a45;
+    }
+    .stSlider [data-baseweb="thumb"] {
+        background-color: #64ffda;
+    }
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #172a45;
+        color: #e6f1ff;
+    }
+
+    /* Ensure all text is visible */
+    p, span, div {
+        color: #e6f1ff;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -350,21 +408,30 @@ def plot_nucleotide_distribution(nucleotide_freq, title):
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
-            'font': {'size': 24, 'color': '#1e3a8a'}
+            'font': {'size': 24, 'color': '#64ffda'}
         },
         xaxis_title='Nucleotide',
         yaxis_title='Frequency',
         yaxis=dict(
             range=[0, max(frequencies) * 1.2],
-            tickformat='.0%'
+            tickformat='.0%',
+            color='#e6f1ff'
         ),
-        plot_bgcolor='rgba(240, 240, 240, 0.8)',
+        xaxis=dict(
+            color='#e6f1ff'
+        ),
+        plot_bgcolor='rgba(23, 42, 69, 1)',
+        paper_bgcolor='rgba(23, 42, 69, 1)',
+        font=dict(
+            color='#e6f1ff'
+        ),
         height=500,
         margin=dict(l=40, r=40, t=80, b=40),
         hoverlabel=dict(
-            bgcolor="white",
+            bgcolor="#172a45",
             font_size=16,
-            font_family="Arial"
+            font_family="Arial",
+            font_color="#e6f1ff"
         )
     )
 
@@ -416,20 +483,29 @@ def plot_kmer_distribution(kmer_freq, title, k=3):
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
-            'font': {'size': 24, 'color': '#1e3a8a'}
+            'font': {'size': 24, 'color': '#64ffda'}
         },
         xaxis_title=f'{k}-mer',
         yaxis_title='Frequency',
         yaxis=dict(
-            tickformat='.0%'
+            tickformat='.0%',
+            color='#e6f1ff'
         ),
-        plot_bgcolor='rgba(240, 240, 240, 0.8)',
+        xaxis=dict(
+            color='#e6f1ff'
+        ),
+        plot_bgcolor='rgba(23, 42, 69, 1)',
+        paper_bgcolor='rgba(23, 42, 69, 1)',
+        font=dict(
+            color='#e6f1ff'
+        ),
         height=600,
         margin=dict(l=40, r=40, t=120, b=100),  # Increased top margin to prevent overlap
         hoverlabel=dict(
-            bgcolor="white",
+            bgcolor="#172a45",
             font_size=16,
-            font_family="Arial"
+            font_family="Arial",
+            font_color="#e6f1ff"
         )
     )
 
@@ -530,17 +606,28 @@ def plot_gc_content_distribution(gc_content, title):
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
-            'font': {'size': 24, 'color': '#1e3a8a'}
+            'font': {'size': 24, 'color': '#64ffda'}
         },
         xaxis_title='GC Content (%)',
         yaxis_title='Frequency',
-        plot_bgcolor='rgba(240, 240, 240, 0.8)',
+        yaxis=dict(
+            color='#e6f1ff'
+        ),
+        xaxis=dict(
+            color='#e6f1ff'
+        ),
+        plot_bgcolor='rgba(23, 42, 69, 1)',
+        paper_bgcolor='rgba(23, 42, 69, 1)',
+        font=dict(
+            color='#e6f1ff'
+        ),
         height=500,
         margin=dict(l=40, r=40, t=80, b=40),
         hoverlabel=dict(
-            bgcolor="white",
+            bgcolor="#172a45",
             font_size=16,
-            font_family="Arial"
+            font_family="Arial",
+            font_color="#e6f1ff"
         ),
         bargap=0.1,
         showlegend=True,
@@ -549,7 +636,11 @@ def plot_gc_content_distribution(gc_content, title):
             yanchor="bottom",
             y=1.02,
             xanchor="right",
-            x=1
+            x=1,
+            font=dict(
+                color='#e6f1ff'
+            ),
+            bgcolor='rgba(23, 42, 69, 0.8)'
         )
     )
 
@@ -859,19 +950,19 @@ def plot_metrics_comparison(metrics_df):
     # Get cell colors for the "Best Model" column
     cell_colors = []
     for row in range(len(table_data)):
-        row_colors = ['white', 'white']  # Default color for first 2 columns
+        row_colors = ['rgba(23, 42, 69, 0.8)', 'rgba(23, 42, 69, 0.8)']  # Dark background for first 2 columns
 
         # Color the "Best Model" cell based on the model name
         if row > 0:  # Skip header row
             best_model = table_data[row][2]
             if best_model == 'Gumbel-Softmax':
-                row_colors.append('rgba(231, 76, 60, 0.2)')  # Light red
+                row_colors.append('rgba(231, 76, 60, 0.5)')  # Darker red for visibility
             elif best_model == 'Improved WGAN-GP':
-                row_colors.append('rgba(46, 204, 113, 0.2)')  # Light green
+                row_colors.append('rgba(46, 204, 113, 0.5)')  # Darker green for visibility
             else:
-                row_colors.append('white')
+                row_colors.append('rgba(23, 42, 69, 0.8)')  # Dark background
         else:
-            row_colors.append('rgba(52, 152, 219, 0.2)')  # Light blue for header
+            row_colors.append('rgba(30, 58, 138, 0.7)')  # Dark blue for header
 
         cell_colors.append(row_colors)
 
@@ -879,9 +970,9 @@ def plot_metrics_comparison(metrics_df):
         go.Table(
             header=dict(
                 values=table_data[0],
-                fill_color='rgba(52, 152, 219, 0.5)',  # Darker header color for better visibility
+                fill_color='rgba(30, 58, 138, 0.7)',  # Dark blue header color for better visibility
                 align='center',
-                font=dict(size=16, color='black', family="Arial, sans-serif"),  # Larger font
+                font=dict(size=16, color='#e6f1ff', family="Arial, sans-serif"),  # Larger font with light color
                 height=40  # Taller header
             ),
             cells=dict(
@@ -894,9 +985,9 @@ def plot_metrics_comparison(metrics_df):
                     for j in range(len(table_data[0]))
                 ],
                 align=['left', 'left', 'center'],
-                font=dict(size=14, family="Arial, sans-serif"),  # Larger font
+                font=dict(size=14, color='#e6f1ff', family="Arial, sans-serif"),  # Larger font with light color
                 height=35,  # Taller cells
-                line=dict(width=1, color='rgba(50, 50, 50, 0.2)')  # Add cell borders
+                line=dict(width=1, color='rgba(100, 255, 218, 0.3)')  # Add cell borders with teal color
             ),
             columnwidth=[0.25, 0.5, 0.25]  # Adjust column widths for better readability
         ),
@@ -912,7 +1003,11 @@ def plot_metrics_comparison(metrics_df):
             yanchor="bottom",
             y=1.02,
             xanchor="right",
-            x=1
+            x=1,
+            font=dict(
+                color='#e6f1ff'
+            ),
+            bgcolor='rgba(23, 42, 69, 0.8)'
         ),
         title={
             'text': 'DNA Sequence Biological Metrics Comparison',
@@ -920,21 +1015,25 @@ def plot_metrics_comparison(metrics_df):
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
-            'font': {'size': 24, 'color': '#1e3a8a'}
+            'font': {'size': 24, 'color': '#64ffda'}
         },
-        plot_bgcolor='rgba(240, 240, 240, 0.8)',
+        plot_bgcolor='rgba(23, 42, 69, 1)',
+        paper_bgcolor='rgba(23, 42, 69, 1)',
+        font=dict(
+            color='#e6f1ff'
+        ),
         margin=dict(l=40, r=40, t=120, b=60),  # Increased top and bottom margins
     )
 
-    # Update axes with more biological context
-    fig.update_yaxes(title_text="Value (%)", row=1, col=1)
-    fig.update_yaxes(title_text="Frequency (%)", row=1, col=2)
-    fig.update_yaxes(title_text="Nucleotide Frequency (%)", row=2, col=1)
+    # Update axes with more biological context and consistent dark theme colors
+    fig.update_yaxes(title_text="Value (%)", title_font=dict(color="#e6f1ff"), tickfont=dict(color="#e6f1ff"), row=1, col=1)
+    fig.update_yaxes(title_text="Frequency (%)", title_font=dict(color="#e6f1ff"), tickfont=dict(color="#e6f1ff"), row=1, col=2)
+    fig.update_yaxes(title_text="Nucleotide Frequency (%)", title_font=dict(color="#e6f1ff"), tickfont=dict(color="#e6f1ff"), row=2, col=1)
 
     # Update x-axis titles
-    fig.update_xaxes(title_text="DNA Stability Metrics", row=1, col=1)
-    fig.update_xaxes(title_text="Promoter Elements", row=1, col=2)
-    fig.update_xaxes(title_text="Nucleotide", row=2, col=1)
+    fig.update_xaxes(title_text="DNA Stability Metrics", title_font=dict(color="#e6f1ff"), tickfont=dict(color="#e6f1ff"), row=1, col=1)
+    fig.update_xaxes(title_text="Promoter Elements", title_font=dict(color="#e6f1ff"), tickfont=dict(color="#e6f1ff"), row=1, col=2)
+    fig.update_xaxes(title_text="Nucleotide", title_font=dict(color="#e6f1ff"), tickfont=dict(color="#e6f1ff"), row=2, col=1)
 
     return fig
 
