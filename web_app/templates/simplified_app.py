@@ -412,7 +412,7 @@ def plot_kmer_distribution(kmer_freq, title, k=3):
     fig.update_layout(
         title={
             'text': f'Top {len(kmers)} {k}-mers - {title}',
-            'y': 0.9,
+            'y': 0.95,
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
@@ -425,7 +425,7 @@ def plot_kmer_distribution(kmer_freq, title, k=3):
         ),
         plot_bgcolor='rgba(240, 240, 240, 0.8)',
         height=600,
-        margin=dict(l=40, r=40, t=80, b=100),
+        margin=dict(l=40, r=40, t=120, b=100),  # Increased top margin to prevent overlap
         hoverlabel=dict(
             bgcolor="white",
             font_size=16,
@@ -741,8 +741,8 @@ def plot_metrics_comparison(metrics_df):
             [{"type": "bar"}, {"type": "bar"}],
             [{"type": "bar"}, {"type": "table"}]
         ],
-        vertical_spacing=0.12,
-        horizontal_spacing=0.08
+        vertical_spacing=0.15,  # Increased vertical spacing
+        horizontal_spacing=0.12  # Increased horizontal spacing
     )
 
     # Color mapping for models
@@ -879,9 +879,10 @@ def plot_metrics_comparison(metrics_df):
         go.Table(
             header=dict(
                 values=table_data[0],
-                fill_color='rgba(52, 152, 219, 0.2)',
+                fill_color='rgba(52, 152, 219, 0.5)',  # Darker header color for better visibility
                 align='center',
-                font=dict(size=14, color='black')
+                font=dict(size=16, color='black', family="Arial, sans-serif"),  # Larger font
+                height=40  # Taller header
             ),
             cells=dict(
                 values=[
@@ -893,16 +894,18 @@ def plot_metrics_comparison(metrics_df):
                     for j in range(len(table_data[0]))
                 ],
                 align=['left', 'left', 'center'],
-                font=dict(size=13),
-                height=30
-            )
+                font=dict(size=14, family="Arial, sans-serif"),  # Larger font
+                height=35,  # Taller cells
+                line=dict(width=1, color='rgba(50, 50, 50, 0.2)')  # Add cell borders
+            ),
+            columnwidth=[0.25, 0.5, 0.25]  # Adjust column widths for better readability
         ),
         row=2, col=2
     )
 
     # Update layout
     fig.update_layout(
-        height=800,
+        height=900,  # Increased height for better visibility
         showlegend=True,
         legend=dict(
             orientation="h",
@@ -920,7 +923,7 @@ def plot_metrics_comparison(metrics_df):
             'font': {'size': 24, 'color': '#1e3a8a'}
         },
         plot_bgcolor='rgba(240, 240, 240, 0.8)',
-        margin=dict(l=40, r=40, t=100, b=40),
+        margin=dict(l=40, r=40, t=120, b=60),  # Increased top and bottom margins
     )
 
     # Update axes with more biological context
@@ -1417,7 +1420,8 @@ def main():
             st.dataframe(
                 display_df.style.format("{:.4f}")
                 .background_gradient(cmap='Blues', axis=1, subset=pd.IndexSlice[:'Sequence Diversity', :])
-                .set_caption("DNA Sequence Biological Properties")
+                .set_caption("DNA Sequence Biological Properties"),
+                use_container_width=True  # Ensure table takes full width
             )
 
             # Display biological significance separately
@@ -1449,7 +1453,8 @@ def main():
             st.dataframe(
                 bio_df.style
                 .set_properties(**{'text-align': 'left'})
-                .set_caption("Biological Relevance of DNA Sequence Features")
+                .set_caption("Biological Relevance of DNA Sequence Features"),
+                use_container_width=True  # Ensure table takes full width
             )
 
             # Visualize metrics with biological context
