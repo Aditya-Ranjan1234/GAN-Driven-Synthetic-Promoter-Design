@@ -199,9 +199,43 @@ st.markdown("""
         color: #e6f1ff;
     }
 
-    /* Ensure all text is visible */
-    p, span, div {
-        color: #e6f1ff;
+    /* Ensure all text is visible with proper contrast */
+    p, span, div, li, a, label {
+        color: #e6f1ff !important;
+    }
+
+    /* Fix any light backgrounds */
+    div[data-testid="stAppViewContainer"] {
+        background-color: #0a192f !important;
+    }
+
+    section[data-testid="stSidebar"] {
+        background-color: #172a45 !important;
+    }
+
+    div[data-testid="stVerticalBlock"] {
+        background-color: #0a192f !important;
+    }
+
+    /* Make sure all markdown text is visible */
+    .element-container, .stMarkdown, .stMarkdown p {
+        color: #e6f1ff !important;
+        background-color: transparent !important;
+    }
+
+    /* Fix any white backgrounds */
+    .stApp {
+        background-color: #0a192f !important;
+    }
+
+    /* Fix any white text on white background */
+    [data-testid="stMarkdownContainer"] > div > p {
+        color: #e6f1ff !important;
+    }
+
+    /* Fix any white backgrounds in containers */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: #172a45 !important;
     }
 
     /* Hide any other potential top bars or decorations */
@@ -212,6 +246,45 @@ st.markdown("""
     /* Ensure no colored borders at the top */
     .main .block-container {
         border-top: none !important;
+    }
+
+    /* Fix any white backgrounds in the app */
+    footer {
+        background-color: #0a192f !important;
+        color: #e6f1ff !important;
+    }
+
+    /* Fix any white text on white background in dataframes */
+    .dataframe {
+        color: #e6f1ff !important;
+    }
+
+    /* Fix any white backgrounds in inputs */
+    input, textarea, [data-baseweb="input"] {
+        background-color: #172a45 !important;
+        color: #e6f1ff !important;
+    }
+
+    /* Fix any light-colored text on light backgrounds */
+    .stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown div, .stMarkdown a, .stMarkdown li {
+        color: #e6f1ff !important;
+        background-color: transparent !important;
+    }
+
+    /* Fix any white backgrounds in markdown containers */
+    [data-testid="stMarkdownContainer"] {
+        background-color: transparent !important;
+    }
+
+    /* Ensure all text in the app has proper contrast */
+    body, .stApp, .main, .element-container {
+        color: #e6f1ff !important;
+        background-color: #0a192f !important;
+    }
+
+    /* Fix any white backgrounds in the app container */
+    [data-testid="stAppViewBlockContainer"] {
+        background-color: #0a192f !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -1536,10 +1609,14 @@ def main():
             display_df = metrics_df.iloc[:3].copy()  # Get just the data rows
             display_df = display_df.T  # Transpose for better display
 
-            # Format the display dataframe
+            # Format the display dataframe with dark theme colors
             st.dataframe(
                 display_df.style.format("{:.4f}")
-                .background_gradient(cmap='Blues', axis=1, subset=pd.IndexSlice[:'Sequence Diversity', :])
+                .background_gradient(cmap='viridis', axis=1, subset=pd.IndexSlice[:'Sequence Diversity', :])
+                .set_properties(**{
+                    'color': '#e6f1ff',
+                    'background-color': '#172a45'
+                })
                 .set_caption("DNA Sequence Biological Properties"),
                 use_container_width=True  # Ensure table takes full width
             )
@@ -1572,7 +1649,11 @@ def main():
             bio_df = pd.DataFrame(bio_data)
             st.dataframe(
                 bio_df.style
-                .set_properties(**{'text-align': 'left'})
+                .set_properties(**{
+                    'text-align': 'left',
+                    'color': '#e6f1ff',
+                    'background-color': '#172a45'
+                })
                 .set_caption("Biological Relevance of DNA Sequence Features"),
                 use_container_width=True  # Ensure table takes full width
             )
