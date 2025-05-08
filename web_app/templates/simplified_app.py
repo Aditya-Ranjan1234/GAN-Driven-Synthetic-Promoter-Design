@@ -1285,7 +1285,7 @@ def main():
     st.sidebar.title("Navigation")
 
     # Add a logo to the sidebar
-    st.sidebar.image("https://cdn-icons-png.flaticon.com/512/6425/6425288.png", width=100)
+    st.sidebar.image("web_app/templates/dna.1024x1024.png", width=100)
 
     page = st.sidebar.radio(
         "Select a page",
